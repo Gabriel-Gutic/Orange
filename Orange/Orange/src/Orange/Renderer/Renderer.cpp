@@ -12,33 +12,18 @@ namespace Orange
 	{
 		float vertices[] =
 		{
-			-0.5f, -0.5f,
-			 0.5f, -0.5f,
-			-0.5f,  0.5f,
-			-0.5f,  0.5f,
-			 0.5f, -0.5f,
-			 0.5f,  0.5f,
+			-0.5f, -0.5f, 1.0f, 0.3f, 0.6f, 1.0f,
+			 0.5f, -0.5f, 1.0f, 0.3f, 0.6f, 1.0f,
+			-0.5f,  0.5f, 1.0f, 0.3f, 0.6f, 1.0f,
+			-0.5f,  0.5f, 1.0f, 0.3f, 0.6f, 1.0f,
+			 0.5f, -0.5f, 1.0f, 0.3f, 0.6f, 1.0f,
+			 0.5f,  0.5f, 1.0f, 0.3f, 0.6f, 1.0f,
 		};
 
-		glGenBuffers(1, &m_VBO);
-
-		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-		glGenVertexArrays(1, &m_VAO);
-
-		glBindVertexArray(m_VAO);
-
-		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-
-		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
-		glEnableVertexAttribArray(0);
-
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-		glBindVertexArray(0);
+		m_VertexBuffer = VertexBuffer::CreateUnique(BufferType::Static, vertices, sizeof(vertices));
+		m_VertexBuffer->Bind();
+		m_VertexArray = VertexArray::CreateUnique({ 2, 4 });
+		m_VertexBuffer->Unbind();
 
 		m_Shader = std::make_unique<Shader>("assets/Shaders/VertexShader.glsl", "assets/Shaders/FragmentShader.glsl");
 	}
@@ -59,7 +44,7 @@ namespace Orange
 		auto& ins = s_Instance;
 
 		ins->m_Shader->Use();
-		glBindVertexArray(ins->m_VAO);
+		ins->m_VertexArray->Bind();
 
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 	}
@@ -68,7 +53,7 @@ namespace Orange
 	{
 		auto& ins = s_Instance;
 
-		glBindVertexArray(0);
+		ins->m_VertexArray->Unbind();
 		ins->m_Shader->Use(false);
 	}
 

@@ -102,6 +102,7 @@
     <ClInclude Include="src\Orange\Core\File\File.h" />
     <ClInclude Include="src\Orange\Core\Logger\Logger.h" />
     <ClInclude Include="src\Orange\Core\Logger\Print.h" />
+    <ClInclude Include="src\Orange\Core\Math\Mat3.h" />
     <ClInclude Include="src\Orange\Core\Math\Math.h" />
     <ClInclude Include="src\Orange\Core\Math\MathFunctions.h" />
     <ClInclude Include="src\Orange\Core\Math\Vec2.h" />
@@ -109,6 +110,8 @@
     <ClInclude Include="src\Orange\Core\Window.h" />
     <ClInclude Include="src\Orange\Renderer\Renderer.h" />
     <ClInclude Include="src\Orange\Renderer\Shader.h" />
+    <ClInclude Include="src\Orange\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Orange\Renderer\VertexBuffer.h" />
     <ClInclude Include="src\pchOrange.h" />
   </ItemGroup>
   <ItemGroup>
@@ -121,10 +124,13 @@
     <ClCompile Include="src\Orange\Core\Event\MouseEvent.cpp" />
     <ClCompile Include="src\Orange\Core\File\File.cpp" />
     <ClCompile Include="src\Orange\Core\Logger\Logger.cpp" />
+    <ClCompile Include="src\Orange\Core\Math\Mat3.cpp" />
     <ClCompile Include="src\Orange\Core\Math\MathFunctions.cpp" />
     <ClCompile Include="src\Orange\Core\Window.cpp" />
     <ClCompile Include="src\Orange\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Orange\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Orange\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Orange\Renderer\VertexBuffer.cpp" />
     <ClCompile Include="src\pchOrange.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

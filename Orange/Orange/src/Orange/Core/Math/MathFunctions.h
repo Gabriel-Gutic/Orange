@@ -1,5 +1,6 @@
 #pragma once
 #include "Vec2.h"
+#include "Mat3.h"
 
 
 namespace Orange::Math
@@ -84,6 +85,10 @@ namespace Orange::Math
 	Vec2<T> Normalize(const Vec2<T>& v);
 
 
+	template <typename T>
+	Vec2<T> Multiply(const Mat3& M, const Vec2<T>& V, float w = 1.0f);
+	template <typename T>
+	Vec2<T> operator*(const Mat3& M, const Vec2<T>& V);
 
 	template<typename T>
 	T DotProduct(const Vec2<T>& v1, const Vec2<T>& v2)
@@ -101,6 +106,21 @@ namespace Orange::Math
 	Vec2<T> Normalize(const Vec2<T>& v)
 	{
 		return v * RSqrt(DotProduct(v, v));
+	}
+
+	template<typename T>
+	Vec2<T> Multiply(const Mat3& M, const Vec2<T>& V, float w)
+	{
+		return Vec2<T>(
+			M[0][0] * V[0] + M[0][1] * V[1] + M[0][2] * w,
+			M[1][0] * V[0] + M[1][1] * V[1] + M[1][2] * w
+			);
+	}
+
+	template<typename T>
+	Vec2<T> operator*(const Mat3& M, const Vec2<T>& V)
+	{
+		return Multiply(M, V);
 	}
 
 

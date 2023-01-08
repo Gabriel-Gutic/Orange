@@ -66,6 +66,9 @@
     <ClInclude Include="src\Orange\Core\File\File.h" />
     <ClInclude Include="src\Orange\Renderer\Renderer.h" />
     <ClInclude Include="src\Orange\Renderer\Shader.h" />
+    <ClInclude Include="src\Orange\Renderer\VertexBuffer.h" />
+    <ClInclude Include="src\Orange\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Orange\Core\Math\Mat3.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Orange\Core\App.cpp">
@@ -98,5 +101,8 @@
     <ClCompile Include="src\Orange\Core\File\File.cpp" />
     <ClCompile Include="src\Orange\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Orange\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Orange\Renderer\VertexBuffer.cpp" />
+    <ClCompile Include="src\Orange\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Orange\Core\Math\Mat3.cpp" />
   </ItemGroup>
 </Project>
