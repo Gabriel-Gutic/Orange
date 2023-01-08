@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{418A6CC8-2D2C-979E-16E7-AAF202281EEF}</ProjectGuid>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Orange</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\Build\bin\Debug-windows-x86_64\Orange\</OutDir>
+    <IntDir>..\Build\bin-int\Debug-windows-x86_64\Orange\</IntDir>
+    <TargetName>Orange</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\Build\bin\Release-windows-x86_64\Orange\</OutDir>
+    <IntDir>..\Build\bin-int\Release-windows-x86_64\Orange\</IntDir>
+    <TargetName>Orange</TargetName>
+    <TargetExt>.lib</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pchOrange.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>ORANGE_PLATFORM_WINDOWS;DEBUG;ORANGE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;src\Orange;dependencies\spdlog\include;dependencies\GLFW\include;dependencies\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pchOrange.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>ORANGE_PLATFORM_WINDOWS;RELEASE;ORANGE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;src\Orange;dependencies\spdlog\include;dependencies\GLFW\include;dependencies\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Orange.h" />
+    <ClInclude Include="src\Orange\Core\App.h" />
+    <ClInclude Include="src\Orange\Core\Color\Color.h" />
+    <ClInclude Include="src\Orange\Core\Core.h" />
+    <ClInclude Include="src\Orange\Core\Event\Event.h" />
+    <ClInclude Include="src\Orange\Core\Event\Events.h" />
+    <ClInclude Include="src\Orange\Core\Event\Input.h" />
+    <ClInclude Include="src\Orange\Core\Event\KeyboardCodes.h" />
+    <ClInclude Include="src\Orange\Core\Event\KeyboardEvent.h" />
+    <ClInclude Include="src\Orange\Core\Event\MouseCodes.h" />
+    <ClInclude Include="src\Orange\Core\Event\MouseEvent.h" />
+    <ClInclude Include="src\Orange\Core\Event\WindowEvent.h" />
+    <ClInclude Include="src\Orange\Core\File\File.h" />
+    <ClInclude Include="src\Orange\Core\Logger\Logger.h" />
+    <ClInclude Include="src\Orange\Core\Logger\Print.h" />
+    <ClInclude Include="src\Orange\Core\Math\Math.h" />
+    <ClInclude Include="src\Orange\Core\Math\MathFunctions.h" />
+    <ClInclude Include="src\Orange\Core\Math\Vec2.h" />
+    <ClInclude Include="src\Orange\Core\Memory.h" />
+    <ClInclude Include="src\Orange\Core\Window.h" />
+    <ClInclude Include="src\pchOrange.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Orange\Core\App.cpp" />
+    <ClCompile Include="src\Orange\Core\Color\Color.cpp" />
+    <ClCompile Include="src\Orange\Core\EntryPoint.cpp" />
+    <ClCompile Include="src\Orange\Core\Event\Event.cpp" />
+    <ClCompile Include="src\Orange\Core\Event\Input.cpp" />
+    <ClCompile Include="src\Orange\Core\Event\KeyboardEvent.cpp" />
+    <ClCompile Include="src\Orange\Core\Event\MouseEvent.cpp" />
+    <ClCompile Include="src\Orange\Core\File\File.cpp" />
+    <ClCompile Include="src\Orange\Core\Logger\Logger.cpp" />
+    <ClCompile Include="src\Orange\Core\Math\MathFunctions.cpp" />
+    <ClCompile Include="src\Orange\Core\Window.cpp" />
+    <ClCompile Include="src\pchOrange.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="dependencies\GLFW\GLFW.vcxproj">
+      <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="dependencies\Glad\Glad.vcxproj">
+      <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
