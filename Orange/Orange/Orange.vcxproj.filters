@@ -64,6 +64,8 @@
     <ClInclude Include="src\Orange\Core\Math\MathFunctions.h" />
     <ClInclude Include="src\Orange\Core\Color\Color.h" />
     <ClInclude Include="src\Orange\Core\File\File.h" />
+    <ClInclude Include="src\Orange\Renderer\Renderer.h" />
+    <ClInclude Include="src\Orange\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Orange\Core\App.cpp">
@@ -94,5 +96,7 @@
     <ClCompile Include="src\Orange\Core\Math\MathFunctions.cpp" />
     <ClCompile Include="src\Orange\Core\Color\Color.cpp" />
     <ClCompile Include="src\Orange\Core\File\File.cpp" />
+    <ClCompile Include="src\Orange\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Orange\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>

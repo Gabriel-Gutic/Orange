@@ -105,6 +105,10 @@
   <ItemGroup>
     <Text Include="files\File.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Shaders\FragmentShader.glsl" />
+    <None Include="assets\Shaders\VertexShader.glsl" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

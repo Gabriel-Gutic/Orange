@@ -30,4 +30,8 @@
   <ItemGroup>
     <Text Include="files\File.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Shaders\VertexShader.glsl" />
+    <None Include="assets\Shaders\FragmentShader.glsl" />
+  </ItemGroup>
 </Project>
