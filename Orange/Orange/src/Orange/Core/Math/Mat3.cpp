@@ -109,10 +109,23 @@ namespace Orange
 			- m_Buffer[0][1] * m_Buffer[1][0] * m_Buffer[2][2];
 	}
 
-	/*Mat3 Mat3::Inverse() const
+	Mat3 Mat3::Inverse() const
 	{
-		return Mat3();
-	}*/
+		Mat3 I;
+		float rdet = 1.0f / Determinant();
+
+		I[0][0] = rdet * (m_Buffer[1][1] * m_Buffer[2][2] - m_Buffer[1][2] * m_Buffer[2][1]);
+		I[1][0] = rdet * (m_Buffer[1][2] * m_Buffer[2][0] - m_Buffer[1][0] * m_Buffer[2][2]);
+		I[2][0] = rdet * (m_Buffer[1][0] * m_Buffer[2][1] - m_Buffer[1][1] * m_Buffer[2][0]);
+		I[0][1] = rdet * (m_Buffer[0][2] * m_Buffer[2][1] - m_Buffer[0][1] * m_Buffer[2][2]);
+		I[1][1] = rdet * (m_Buffer[0][0] * m_Buffer[2][2] - m_Buffer[0][2] * m_Buffer[2][0]);
+		I[2][1] = rdet * (m_Buffer[0][1] * m_Buffer[2][0] - m_Buffer[0][0] * m_Buffer[2][1]);
+		I[0][2] = rdet * (m_Buffer[0][1] * m_Buffer[1][2] - m_Buffer[0][2] * m_Buffer[1][1]);
+		I[1][2] = rdet * (m_Buffer[0][2] * m_Buffer[1][0] - m_Buffer[0][0] * m_Buffer[1][2]);
+		I[2][2] = rdet * (m_Buffer[0][0] * m_Buffer[1][1] - m_Buffer[0][1] * m_Buffer[1][0]);
+
+		return I;
+	}
 
 	Mat3 operator+(const Mat3& A, const Mat3& B)
 	{
@@ -138,7 +151,7 @@ namespace Orange
 		for (int i = 0; i < 3; i++)
 			for (int k = 0; k < 3; k++)
 				for (int j = 0; j < 3; j++)
-					result[i][j] += result[i][k] + result[k][j];
+					result[i][j] += A[i][k] * B[k][j];
 		return result;
 	}
 

@@ -34,7 +34,7 @@ namespace Orange
 
 		Mat3 Transpose() const;
 		float Determinant() const;
-		//Mat3 Inverse() const;
+		Mat3 Inverse() const;
 	private:
 		std::array<std::array<float, 3>, 3> m_Buffer;
 	};
