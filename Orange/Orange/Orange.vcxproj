@@ -109,7 +109,9 @@
     <ClInclude Include="src\Orange\Core\Memory.h" />
     <ClInclude Include="src\Orange\Core\Window.h" />
     <ClInclude Include="src\Orange\Renderer\Renderer.h" />
+    <ClInclude Include="src\Orange\Renderer\RendererData.h" />
     <ClInclude Include="src\Orange\Renderer\Shader.h" />
+    <ClInclude Include="src\Orange\Renderer\Vertex.h" />
     <ClInclude Include="src\Orange\Renderer\VertexArray.h" />
     <ClInclude Include="src\Orange\Renderer\VertexBuffer.h" />
     <ClInclude Include="src\pchOrange.h" />

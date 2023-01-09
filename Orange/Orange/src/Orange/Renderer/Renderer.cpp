@@ -4,23 +4,35 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
+#include "Vertex.h"
+#include "RendererData.h"
+
 
 namespace Orange
 {
 	Renderer* Renderer::s_Instance = nullptr;
+
+	struct RendererData
+	{
+		std::array<Vertex, MAX_VERTEX_NUMBER> Vertices = {};
+		uint32_t VertexCounter = 0;
+	};
+	static RendererData s_Data = {};
+
 	Renderer::Renderer()
 	{
-		float vertices[] =
+		s_Data.Vertices =
 		{
-			-0.5f, -0.5f, 1.0f, 0.3f, 0.6f, 1.0f,
-			 0.5f, -0.5f, 1.0f, 0.3f, 0.6f, 1.0f,
-			-0.5f,  0.5f, 1.0f, 0.3f, 0.6f, 1.0f,
-			-0.5f,  0.5f, 1.0f, 0.3f, 0.6f, 1.0f,
-			 0.5f, -0.5f, 1.0f, 0.3f, 0.6f, 1.0f,
-			 0.5f,  0.5f, 1.0f, 0.3f, 0.6f, 1.0f,
+			Vertex({-0.5f, -0.5f}, {1.0f, 0.3f, 0.6f, 1.0f}),
+			Vertex({ 0.5f, -0.5f}, {1.0f, 0.3f, 0.6f, 1.0f}),
+			Vertex({-0.5f,  0.5f}, {1.0f, 0.3f, 0.6f, 1.0f}),
+			Vertex({-0.5f,  0.5f}, {1.0f, 0.3f, 0.6f, 1.0f}),
+			Vertex({ 0.5f, -0.5f}, {1.0f, 0.3f, 0.6f, 1.0f}),
+			Vertex({ 0.5f,  0.5f}, {1.0f, 0.3f, 0.6f, 1.0f}),
 		};
+		s_Data.VertexCounter = 6;
 
-		m_VertexBuffer = VertexBuffer::CreateUnique(BufferType::Static, vertices, sizeof(vertices));
+		m_VertexBuffer = VertexBuffer::CreateUnique(BufferType::Dynamic, nullptr, sizeof(RendererData::Vertices));
 		m_VertexBuffer->Bind();
 		m_VertexArray = VertexArray::CreateUnique({ 2, 4 });
 		m_VertexBuffer->Unbind();
@@ -43,10 +55,21 @@ namespace Orange
 	{
 		auto& ins = s_Instance;
 
+		Mat3 R = Math::Rotate(0.01f);
+
+		for (auto& vertex : s_Data.Vertices)
+		{
+			vertex.Position = R * vertex.Position;
+		}
+
 		ins->m_Shader->Use();
 		ins->m_VertexArray->Bind();
 
-		glDrawArrays(GL_TRIANGLES, 0, 6);
+		ins->m_VertexBuffer->Bind();
+		ins->m_VertexBuffer->SetData(s_Data.Vertices, s_Data.VertexCounter);
+		ins->m_VertexBuffer->Unbind();
+
+		glDrawArrays(GL_TRIANGLES, 0, s_Data.VertexCounter);
 	}
 
 	void Renderer::End()

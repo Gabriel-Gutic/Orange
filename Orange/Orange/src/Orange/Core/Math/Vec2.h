@@ -25,7 +25,7 @@ namespace Orange
 	public:
 		Vec2(const T& x = T(), const T& y = T());
 		Vec2(const Vec2& other);
-		virtual ~Vec2() = default;
+		~Vec2() = default;
 
 		Vec2& operator=(const Vec2& other);
 
@@ -37,16 +37,7 @@ namespace Orange
 		friend Vec2 operator*(const Vec2& v1, const Vec2& v2);
 		template <typename T>
 		friend Vec2 operator/(const Vec2& v1, const Vec2& v2);
-
-		template <typename T>
-		friend Vec2 operator*(const Vec2& v, const T& scalar);
-		template <typename T>
-		friend Vec2 operator/(const Vec2& v, const T& scalar);
-		template <typename T>
-		friend Vec2 operator*(const T& scalar, const Vec2& v);
-		template <typename T>
-		friend Vec2 operator/(const T& scalar, const Vec2& v);
-
+		
 		T& operator[](uint32_t index);
 		const T& operator[](uint32_t index) const;
 
@@ -85,7 +76,7 @@ namespace Orange
 			x = other.x;
 			y = other.y;
 		}
-		return this;
+		return *this;
 	}
 
 	template<typename T>
@@ -154,29 +145,5 @@ namespace Orange
 	Vec2<T> operator/(const Vec2<T>& v1, const Vec2<T>& v2)
 	{
 		return Vec2<T>(v1.x / v2.x, v1.y / v2.y);
-	}
-
-	template<typename T>
-	Vec2<T> operator*(const Vec2<T>& v, const T& scalar)
-	{
-		return Vec2<T>(v.x * scalar, v.y * scalar);
-	}
-
-	template<typename T>
-	Vec2<T> operator/(const Vec2<T>& v, const T& scalar)
-	{
-		return Vec2<T>(v.x / scalar, v.y / scalar);
-	}
-
-	template<typename T>
-	Vec2<T> operator*(const T& scalar, const Vec2<T>& v)
-	{
-		return v * scalar;
-	}
-
-	template<typename T>
-	Vec2<T> operator/(const T& scalar, const Vec2<T>& v)
-	{
-		return v / scalar;
 	}
 }

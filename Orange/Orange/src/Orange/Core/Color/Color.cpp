@@ -4,19 +4,19 @@
 
 namespace Orange
 {
-	Color Color::White = Color(1.0f, 1.0f, 1.0f);
-	Color Color::Black = Color(0.0f, 0.0f, 0.0f);
-	Color Color::Red   = Color(1.0f, 0.0f, 0.0f);
-	Color Color::Green = Color(0.0f, 1.0f, 0.0f);
-	Color Color::Blue  = Color(0.0f, 0.0f, 1.0f);
+	FColor FColor::White = FColor(1.0f, 1.0f, 1.0f);
+	FColor FColor::Black = FColor(0.0f, 0.0f, 0.0f);
+	FColor FColor::Red   = FColor(1.0f, 0.0f, 0.0f);
+	FColor FColor::Green = FColor(0.0f, 1.0f, 0.0f);
+	FColor FColor::Blue  = FColor(0.0f, 0.0f, 1.0f);
 
 
-	Color::Color(float r, float g, float b, float a)
+	FColor::FColor(float r, float g, float b, float a)
 		:r(r), g(g), b(b), a(a)
 	{
 	}
 
-	Color::Color(const Color& other)
+	FColor::FColor(const FColor& other)
 	{
 		if (this != &other)
 		{
@@ -27,7 +27,7 @@ namespace Orange
 		}
 	}
 
-	Color& Color::operator=(const Color& other)
+	FColor& FColor::operator=(const FColor& other)
 	{
 		if (this != &other)
 		{
@@ -39,22 +39,22 @@ namespace Orange
 		return *this;
 	}
 
-	float* Color::ToPtr()
+	float* FColor::ToPtr()
 	{
 		return rgba.data();
 	}
 
-	const float* Color::ToPtr() const
+	const float* FColor::ToPtr() const
 	{
 		return rgba.data();
 	}
 
-	float& Color::operator[](uint32_t index)
+	float& FColor::operator[](uint32_t index)
 	{
 		return rgba[index];
 	}
 
-	const float& Color::operator[](uint32_t index) const
+	const float& FColor::operator[](uint32_t index) const
 	{
 		return rgba[index];
 	}

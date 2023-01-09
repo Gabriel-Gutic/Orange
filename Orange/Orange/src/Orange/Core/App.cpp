@@ -27,7 +27,7 @@ namespace Orange
 	{
 		while (m_IsRunning)
 		{
-			m_Window->Clear(Color::Blue);
+			m_Window->Clear(FColor::Blue);
 
 			while (!m_EventQueue.empty())
 			{

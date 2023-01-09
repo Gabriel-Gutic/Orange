@@ -21,7 +21,7 @@ namespace Orange
 		std::any Get();
 
 		// TODO: Add background color
-		void Clear(const Color& color) const;
+		void Clear(const FColor& color) const;
 		void SwapBuffers() const;
 
 		int GetWidth() const;

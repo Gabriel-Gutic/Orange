@@ -155,7 +155,7 @@ namespace Orange
 		return m_Handle;
 	}
 
-	void Window::Clear(const Color& color) const
+	void Window::Clear(const FColor& color) const
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
 		glClearColor(color.r, color.g, color.b, color.a);

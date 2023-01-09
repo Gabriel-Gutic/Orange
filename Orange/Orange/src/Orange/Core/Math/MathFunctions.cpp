@@ -402,4 +402,72 @@ namespace Orange
 	{
 		return radians * (180 / pi);
 	}
+
+	Float2 Math::Multiply(const Mat3& M, const Float2& V, float w)
+	{
+		return Float2(
+			M[0][0] * V[0] + M[0][1] * V[1] + M[0][2] * w,
+			M[1][0] * V[0] + M[1][1] * V[1] + M[1][2] * w
+			);
+	}
+
+	Float2 operator*(const Mat3& M, const Float2& V)
+	{
+		return Math::Multiply(M, V);
+	}
+
+	Float2 operator*(const Float2& f2, float scalar)
+	{
+		return Float2(f2.x * scalar, f2.y * scalar);
+	}
+
+	Float2 operator*(float scalar, const Float2& f2)
+	{
+		return f2 * scalar;
+	}
+
+	Float2 operator/(const Float2& f2, float scalar)
+	{
+		return Float2(f2.x / scalar, f2.y / scalar);
+	}
+
+	Mat3 Math::Rotate(float degrees)
+	{
+		Mat3 M(1.0f);
+
+		float radians = Math::Radians(degrees);
+
+		M[0][0] =  Math::Cos(radians);
+		M[0][1] = -Math::Sin(radians);
+		M[1][0] =  Math::Sin(radians);
+		M[1][1] =  Math::Cos(radians);
+
+		return M;
+	}
+
+	Mat3 Math::Scale(float xScale, float yScale)
+	{
+		Mat3 M(1.0f);
+		M[0][0] = xScale;
+		M[1][1] = yScale;
+		return M;
+	}
+
+	Mat3 Math::Scale(const Float2& scale)
+	{
+		return Scale(scale.x, scale.y);
+	}
+
+	Mat3 Math::Translate(float x, float y)
+	{
+		Mat3 M(1.0f);
+		M[0][2] = x;
+		M[1][2] = y;
+		return M;
+	}
+
+	Mat3 Math::Translate(const Float2& coords)
+	{
+		return Translate(coords.x, coords.y);
+	}
 }

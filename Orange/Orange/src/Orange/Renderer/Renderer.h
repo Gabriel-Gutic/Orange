@@ -20,7 +20,6 @@ namespace Orange
 
 		static Renderer* Get();
 	private:
-		unsigned int m_VBO, m_VAO;
 		std::unique_ptr<Shader> m_Shader;
 		std::unique_ptr<VertexArray> m_VertexArray;
 		std::unique_ptr<VertexBuffer> m_VertexBuffer;

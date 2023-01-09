@@ -69,6 +69,8 @@
     <ClInclude Include="src\Orange\Renderer\VertexBuffer.h" />
     <ClInclude Include="src\Orange\Renderer\VertexArray.h" />
     <ClInclude Include="src\Orange\Core\Math\Mat3.h" />
+    <ClInclude Include="src\Orange\Renderer\Vertex.h" />
+    <ClInclude Include="src\Orange\Renderer\RendererData.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Orange\Core\App.cpp">

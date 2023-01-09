@@ -3,7 +3,7 @@
 
 namespace Orange
 {
-	class Color
+	class FColor
 	{
 	public:
 		union
@@ -26,16 +26,16 @@ namespace Orange
 			};
 		};
 	public:
-		static Color White;
-		static Color Black;
-		static Color Red;
-		static Color Green;
-		static Color Blue;
+		static FColor White;
+		static FColor Black;
+		static FColor Red;
+		static FColor Green;
+		static FColor Blue;
 	public:
-		Color(float r = 1.0f, float g = 1.0f, float b = 1.0f, float a = 1.0f);
-		Color(const Color& other);
-		virtual ~Color() = default;
-		Color& operator=(const Color& other);
+		FColor(float r = 1.0f, float g = 1.0f, float b = 1.0f, float a = 1.0f);
+		FColor(const FColor& other);
+		~FColor() = default;
+		FColor& operator=(const FColor& other);
 
 		float* ToPtr();
 		const float* ToPtr() const;
