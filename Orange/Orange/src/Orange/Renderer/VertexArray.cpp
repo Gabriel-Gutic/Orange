@@ -6,9 +6,11 @@
 
 namespace Orange
 {
-	VertexArray::VertexArray(const std::initializer_list<uint8_t>& layout)
-		:m_VertexBuffer(nullptr)
+	VertexArray::VertexArray(const std::initializer_list<uint8_t>& layout, const std::shared_ptr<VertexBuffer>& vb)
+		:m_VertexBuffer(vb)
 	{
+		vb->Bind();
+
 		glGenVertexArrays(1, &m_RendererID);
 
 		Bind();
@@ -31,6 +33,8 @@ namespace Orange
 		}
 
 		Unbind();
+
+		vb->Unbind();
 	}
 
 	VertexArray::~VertexArray()
@@ -53,31 +57,31 @@ namespace Orange
 		return m_RendererID;
 	}
 
-	void VertexArray::SetVertexBuffer(std::unique_ptr<VertexBuffer>&& vb)
+	void VertexArray::SetVertexBuffer(const std::shared_ptr<VertexBuffer>& vb)
 	{
 		if (vb)
 		{
-			m_VertexBuffer = std::move(vb);
+			m_VertexBuffer = vb;
 		}
 	}
 
-	std::unique_ptr<VertexBuffer>& VertexArray::GetVertexBuffer()
+	std::shared_ptr<VertexBuffer>& VertexArray::GetVertexBuffer()
 	{
 		return m_VertexBuffer;
 	}
 
-	const std::unique_ptr<VertexBuffer>& VertexArray::GetVertexBuffer() const
+	const std::shared_ptr<VertexBuffer>& VertexArray::GetVertexBuffer() const
 	{
 		return m_VertexBuffer;
 	}
 
-	std::unique_ptr<VertexArray> VertexArray::CreateUnique(const std::initializer_list<uint8_t>& layout)
+	std::unique_ptr<VertexArray> VertexArray::CreateUnique(const std::initializer_list<uint8_t>& layout, const std::shared_ptr<VertexBuffer>& vb)
 	{
-		return std::make_unique<VertexArray>(layout);
+		return std::make_unique<VertexArray>(layout, vb);
 	}
 
-	std::shared_ptr<VertexArray> VertexArray::CreateShared(const std::initializer_list<uint8_t>& layout)
+	std::shared_ptr<VertexArray> VertexArray::CreateShared(const std::initializer_list<uint8_t>& layout, const std::shared_ptr<VertexBuffer>& vb)
 	{
-		return std::make_shared<VertexArray>(layout);
+		return std::make_shared<VertexArray>(layout, vb);
 	}
 }

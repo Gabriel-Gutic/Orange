@@ -20,6 +20,10 @@ namespace Orange
 
 	App::~App()
 	{
+		for (auto& layer : m_LayerStack)
+			delete layer;
+		m_LayerStack.clear();
+
 		Renderer::Terminate();
 	}
 
@@ -40,10 +44,16 @@ namespace Orange
 
 				ORANGE_PRINT(e.ToString());
 
+				for (auto& layer : m_LayerStack)
+					layer->OnEvent(e);
+
 				PopEvent();
 			}
 
 			Renderer::Begin();
+
+			for (auto& layer : m_LayerStack)
+				layer->OnUpdate();
 
 			Renderer::End();
 
@@ -65,6 +75,23 @@ namespace Orange
 	{
 		delete s_Instance->m_EventQueue.front();
 		s_Instance->m_EventQueue.pop();
+	}
+
+	void App::PushLayer(Layer* layer)
+	{
+		if (layer)
+		{
+			s_Instance->m_LayerStack.push_back(layer);
+		}
+	}
+
+	void App::PopLayer()
+	{
+		if (!s_Instance->m_LayerStack.empty())
+		{
+			delete s_Instance->m_LayerStack.back();
+			s_Instance->m_LayerStack.pop_back();
+		}
 	}
 }
 

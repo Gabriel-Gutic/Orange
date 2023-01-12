@@ -26,6 +26,7 @@ project "Orange"
 	{
 		"src",
 		"src/Orange",
+		"dependencies/stb_image",
 		"dependencies/spdlog/include",
 		"dependencies/GLFW/include",
 		"dependencies/Glad/include",

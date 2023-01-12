@@ -51,6 +51,43 @@ namespace Orange
 		}
 	}
 
+	int Shader::GetUniformLocation(const std::string& uniform) const
+	{
+		Use();
+		if (m_UniformLocations.find(uniform) != m_UniformLocations.end())
+			return m_UniformLocations[uniform];
+
+		int id = glGetUniformLocation(m_RendererID, uniform.c_str());
+		if (id == -1)
+			ORANGE_ERROR("Uniform {0} not found!", uniform);
+
+		return id;
+	}
+
+	void Shader::SetMat3(const std::string& location, const Mat3& matrix)
+	{
+		int id = GetUniformLocation(location);
+		glUniformMatrix3fv(id, 1, GL_FALSE, matrix.ToPtr());
+	}
+
+	void Shader::SetFloat(const std::string& location, float f)
+	{
+		int id = GetUniformLocation(location);
+		glUniform1f(id, f);
+	}
+
+	void Shader::SetFloat2(const std::string& location, const Float2& f2)
+	{
+		int id = GetUniformLocation(location);
+		glUniform2f(id, f2.x, f2.y);
+	}
+
+	void Shader::SetIntData(const std::string& location, unsigned int size, const int* data)
+	{
+		int id = GetUniformLocation(location);
+		glUniform1iv(id, size, data);
+	}
+
 	uint32_t Shader::CompileShader(std::string_view shaderPath, int type)
 	{
 		// Load the Vertex Shader

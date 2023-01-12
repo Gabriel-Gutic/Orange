@@ -7,17 +7,32 @@
     <Filter Include="Orange\Core">
       <UniqueIdentifier>{393FEB6E-A5F4-6364-2EE9-5D3B9A9D5A68}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Orange\Core\Color">
+      <UniqueIdentifier>{879D73DE-F3B3-7174-3C2B-FD95A88042FC}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Orange\Core\Event">
       <UniqueIdentifier>{4A879BDE-B69D-9974-FF14-25966B6A6AFC}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Orange\Core\File">
+      <UniqueIdentifier>{085A3BF7-F452-5A49-1D85-3FCE09DD3955}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Orange\Core\Logger">
       <UniqueIdentifier>{E8DAE2C1-D4BE-A317-3D1F-9E6A29228E99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Orange\Core\Math">
+      <UniqueIdentifier>{B20F3FF7-9E08-5E49-C73A-43CEB3923D55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Orange\Renderer">
+      <UniqueIdentifier>{07E76131-7372-CFF5-7C83-52EAE88D2BF6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Orange.h" />
     <ClInclude Include="src\Orange\Core\App.h">
       <Filter>Orange\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Core\Color\Color.h">
+      <Filter>Orange\Core\Color</Filter>
     </ClInclude>
     <ClInclude Include="src\Orange\Core\Core.h">
       <Filter>Orange\Core</Filter>
@@ -46,11 +61,26 @@
     <ClInclude Include="src\Orange\Core\Event\WindowEvent.h">
       <Filter>Orange\Core\Event</Filter>
     </ClInclude>
+    <ClInclude Include="src\Orange\Core\File\File.h">
+      <Filter>Orange\Core\File</Filter>
+    </ClInclude>
     <ClInclude Include="src\Orange\Core\Logger\Logger.h">
       <Filter>Orange\Core\Logger</Filter>
     </ClInclude>
     <ClInclude Include="src\Orange\Core\Logger\Print.h">
       <Filter>Orange\Core\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Core\Math\Mat3.h">
+      <Filter>Orange\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Core\Math\Math.h">
+      <Filter>Orange\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Core\Math\MathFunctions.h">
+      <Filter>Orange\Core\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Core\Math\Vec2.h">
+      <Filter>Orange\Core\Math</Filter>
     </ClInclude>
     <ClInclude Include="src\Orange\Core\Memory.h">
       <Filter>Orange\Core</Filter>
@@ -58,23 +88,37 @@
     <ClInclude Include="src\Orange\Core\Window.h">
       <Filter>Orange\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Orange\Renderer\Image.h">
+      <Filter>Orange\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Renderer\Renderer.h">
+      <Filter>Orange\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Renderer\RendererData.h">
+      <Filter>Orange\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Renderer\Shader.h">
+      <Filter>Orange\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Renderer\Vertex.h">
+      <Filter>Orange\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Renderer\VertexArray.h">
+      <Filter>Orange\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Renderer\VertexBuffer.h">
+      <Filter>Orange\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\pchOrange.h" />
-    <ClInclude Include="src\Orange\Core\Math\Vec2.h" />
-    <ClInclude Include="src\Orange\Core\Math\Math.h" />
-    <ClInclude Include="src\Orange\Core\Math\MathFunctions.h" />
-    <ClInclude Include="src\Orange\Core\Color\Color.h" />
-    <ClInclude Include="src\Orange\Core\File\File.h" />
-    <ClInclude Include="src\Orange\Renderer\Renderer.h" />
-    <ClInclude Include="src\Orange\Renderer\Shader.h" />
-    <ClInclude Include="src\Orange\Renderer\VertexBuffer.h" />
-    <ClInclude Include="src\Orange\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Orange\Core\Math\Mat3.h" />
-    <ClInclude Include="src\Orange\Renderer\Vertex.h" />
-    <ClInclude Include="src\Orange\Renderer\RendererData.h" />
+    <ClInclude Include="src\Orange\Renderer\Texture.h" />
+    <ClInclude Include="src\Orange\Core\Layer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Orange\Core\App.cpp">
       <Filter>Orange\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Orange\Core\Color\Color.cpp">
+      <Filter>Orange\Core\Color</Filter>
     </ClCompile>
     <ClCompile Include="src\Orange\Core\EntryPoint.cpp">
       <Filter>Orange\Core</Filter>
@@ -91,20 +135,37 @@
     <ClCompile Include="src\Orange\Core\Event\MouseEvent.cpp">
       <Filter>Orange\Core\Event</Filter>
     </ClCompile>
+    <ClCompile Include="src\Orange\Core\File\File.cpp">
+      <Filter>Orange\Core\File</Filter>
+    </ClCompile>
     <ClCompile Include="src\Orange\Core\Logger\Logger.cpp">
       <Filter>Orange\Core\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Orange\Core\Math\Mat3.cpp">
+      <Filter>Orange\Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Orange\Core\Math\MathFunctions.cpp">
+      <Filter>Orange\Core\Math</Filter>
     </ClCompile>
     <ClCompile Include="src\Orange\Core\Window.cpp">
       <Filter>Orange\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Orange\Renderer\Image.cpp">
+      <Filter>Orange\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Orange\Renderer\Renderer.cpp">
+      <Filter>Orange\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Orange\Renderer\Shader.cpp">
+      <Filter>Orange\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Orange\Renderer\VertexArray.cpp">
+      <Filter>Orange\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Orange\Renderer\VertexBuffer.cpp">
+      <Filter>Orange\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\pchOrange.cpp" />
-    <ClCompile Include="src\Orange\Core\Math\MathFunctions.cpp" />
-    <ClCompile Include="src\Orange\Core\Color\Color.cpp" />
-    <ClCompile Include="src\Orange\Core\File\File.cpp" />
-    <ClCompile Include="src\Orange\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Orange\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Orange\Renderer\VertexBuffer.cpp" />
-    <ClCompile Include="src\Orange\Renderer\VertexArray.cpp" />
-    <ClCompile Include="src\Orange\Core\Math\Mat3.cpp" />
+    <ClCompile Include="src\Orange\Renderer\Texture.cpp" />
   </ItemGroup>
 </Project>

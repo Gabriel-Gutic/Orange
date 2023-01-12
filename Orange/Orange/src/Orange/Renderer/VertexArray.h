@@ -7,21 +7,21 @@ namespace Orange
 	class VertexArray
 	{
 	public:
-		VertexArray(const std::initializer_list<uint8_t>& layout);
+		VertexArray(const std::initializer_list<uint8_t>& layout, const std::shared_ptr<VertexBuffer>& vb);
 		virtual ~VertexArray();
 
 		void Bind();
 		void Unbind();
 		uint32_t GetID() const;
 
-		void SetVertexBuffer(std::unique_ptr<VertexBuffer>&& vb);
-		std::unique_ptr<VertexBuffer>& GetVertexBuffer();
-		const std::unique_ptr<VertexBuffer>& GetVertexBuffer() const;
+		void SetVertexBuffer(const std::shared_ptr<VertexBuffer>& vb);
+		std::shared_ptr<VertexBuffer>& GetVertexBuffer();
+		const std::shared_ptr<VertexBuffer>& GetVertexBuffer() const;
 
-		static std::unique_ptr<VertexArray> CreateUnique(const std::initializer_list<uint8_t>& layout);
-		static std::shared_ptr<VertexArray> CreateShared(const std::initializer_list<uint8_t>& layout);
+		static std::unique_ptr<VertexArray> CreateUnique(const std::initializer_list<uint8_t>& layout, const std::shared_ptr<VertexBuffer>& vb);
+		static std::shared_ptr<VertexArray> CreateShared(const std::initializer_list<uint8_t>& layout, const std::shared_ptr<VertexBuffer>& vb);
 	private:
 		uint32_t m_RendererID;
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
+		std::shared_ptr<VertexBuffer> m_VertexBuffer;
 	};
 }

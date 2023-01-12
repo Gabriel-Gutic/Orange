@@ -102,13 +102,6 @@
       <Project>{418A6CC8-2D2C-979E-16E7-AAF202281EEF}</Project>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="files\File.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="assets\Shaders\FragmentShader.glsl" />
-    <None Include="assets\Shaders\VertexShader.glsl" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

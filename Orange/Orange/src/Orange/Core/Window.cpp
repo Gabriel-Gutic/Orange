@@ -30,8 +30,11 @@ namespace Orange
 			false
 			})
 	{
+		ORANGE_PRINT("It's working!");
 		/* Initialize the library */
 		ORANGE_ASSERT(glfwInit(), "Failed to initialize GLFW!");
+
+		ORANGE_PRINT("It's working!");
 
 		/* Create a windowed mode window and its OpenGL context */
 		auto window = glfwCreateWindow(m_Data.Width, m_Data.Height, m_Data.Title.c_str(), NULL, NULL);
@@ -40,8 +43,6 @@ namespace Orange
 			glfwTerminate();
 			ORANGE_ASSERT(0, "Failed to create GLFW Window!");
 		}
-
-
 
 		glfwSetWindowPos(window, m_Data.X, m_Data.Y);
 
@@ -71,7 +72,7 @@ namespace Orange
 		//SetIcon("assets/Logo/logo.ico");
 
 		// Check if CapsLock and NumLock are on
-		glfwSetInputMode(window, GLFW_LOCK_KEY_MODS, GLFW_TRUE);
+		// glfwSetInputMode(window, GLFW_LOCK_KEY_MODS, GLFW_TRUE);
 
 		glfwSetKeyCallback(window, [](GLFWwindow* window, int key, int scancode, int action, int mods) {
 			switch (action)

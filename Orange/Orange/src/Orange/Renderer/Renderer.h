@@ -1,6 +1,7 @@
 #pragma once
 #include "Shader.h"
 #include "VertexArray.h"
+#include "Texture.h"
 
 
 namespace Orange
@@ -18,11 +19,16 @@ namespace Orange
 		static void Begin();
 		static void End();
 
+		static void DrawTexture(const std::shared_ptr<Texture>& texture, const Float2& position);
+		static void DrawQuad(const Float2& center, float side = 1.0f, const FColor& color = FColor::White);
+
 		static Renderer* Get();
+	private:
+		float GetTextureIndex(const std::shared_ptr<Texture>& texture);
+		void Flush();
 	private:
 		std::unique_ptr<Shader> m_Shader;
 		std::unique_ptr<VertexArray> m_VertexArray;
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
 
 		static Renderer* s_Instance;
 	};
