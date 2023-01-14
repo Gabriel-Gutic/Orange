@@ -8,11 +8,13 @@ out vec4 o_Color;
 out vec2 o_TexCoords;
 out float o_TexIndex;
 
+uniform mat3 u_PV;
+
 
 void main()
 {
 	o_Color = Color;
 	o_TexCoords = TexCoords;
 	o_TexIndex = TexIndex;
-	gl_Position = vec4(Position, 0.0f, 1.0f);
+	gl_Position = vec4((u_PV * vec3(Position, 1.0f)).xy, 0.0f, 1.0f);
 }

@@ -7,6 +7,7 @@
 #include "Vertex.h"
 #include "Texture.h"
 #include "RendererData.h"
+#include "Core/App.h"
 
 
 namespace Orange
@@ -45,6 +46,9 @@ namespace Orange
 
 	void Renderer::Begin()
 	{
+		auto& ins = s_Instance;
+
+		ins->m_Shader->SetMat3("u_PV", App::GetCamera()->GetProjectionView());
 	}
 
 	void Renderer::End()
@@ -52,7 +56,7 @@ namespace Orange
 		s_Instance->Flush();
 	}
 
-	void Renderer::DrawTexture(const std::shared_ptr<Texture>& texture, const Float2& position)
+	void Renderer::DrawTexture(const std::shared_ptr<Texture>& texture, const Float2& position, float scale)
 	{
 		if (texture)
 		{
@@ -60,8 +64,8 @@ namespace Orange
 				s_Instance->Flush();
 
 			float aspectRatio = texture->GetAspectRatio();
-			float x_radius = 0.5f;
-			float y_radius = 0.5f / aspectRatio;
+			float x_radius = scale / 2.0f;
+			float y_radius = x_radius / aspectRatio;
 
 			float texIndex = s_Instance->GetTextureIndex(texture);
 

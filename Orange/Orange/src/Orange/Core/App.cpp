@@ -14,6 +14,7 @@ namespace Orange
 		s_Instance = this;
 
 		m_Window = std::make_unique<Window>();
+		m_Camera = std::make_unique<Camera>();
 
 		Renderer::Initialize();
 	}
@@ -64,6 +65,11 @@ namespace Orange
 	void App::Exit()
 	{
 		m_IsRunning = false;
+	}
+
+	std::unique_ptr<Window>& App::GetWindow()
+	{
+		return s_Instance->m_Window;
 	}
 
 	void App::PushEvent(Event* e)

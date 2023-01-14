@@ -6,6 +6,8 @@ public:
 	TileAppLayer()
 	{
 		m_Texture = Orange::Texture::CreateShared("assets/Images/wild-chest.jpg");
+	
+		Orange::App::GetCamera()->SetWidth(2.0f);
 	}
 
 	~TileAppLayer()
@@ -22,7 +24,10 @@ public:
 
 	virtual void OnEvent(const Orange::Event& e) override
 	{
+		if (e.GetType() == Orange::EventType::KeyRepeat)
+		{
 
+		}
 	}
 private:
 	std::shared_ptr<Orange::Texture> m_Texture;

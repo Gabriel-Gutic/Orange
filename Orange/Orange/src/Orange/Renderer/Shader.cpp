@@ -67,7 +67,7 @@ namespace Orange
 	void Shader::SetMat3(const std::string& location, const Mat3& matrix)
 	{
 		int id = GetUniformLocation(location);
-		glUniformMatrix3fv(id, 1, GL_FALSE, matrix.ToPtr());
+		glUniformMatrix3fv(id, 1, GL_TRUE, matrix.ToPtr());
 	}
 
 	void Shader::SetFloat(const std::string& location, float f)

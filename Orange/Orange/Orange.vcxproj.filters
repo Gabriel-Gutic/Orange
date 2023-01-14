@@ -112,6 +112,8 @@
     <ClInclude Include="src\pchOrange.h" />
     <ClInclude Include="src\Orange\Renderer\Texture.h" />
     <ClInclude Include="src\Orange\Core\Layer.h" />
+    <ClInclude Include="src\Orange\Renderer\Camera.h" />
+    <ClInclude Include="src\Orange\Core\Object.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Orange\Core\App.cpp">
@@ -167,5 +169,6 @@
     </ClCompile>
     <ClCompile Include="src\pchOrange.cpp" />
     <ClCompile Include="src\Orange\Renderer\Texture.cpp" />
+    <ClCompile Include="src\Orange\Renderer\Camera.cpp" />
   </ItemGroup>
 </Project>

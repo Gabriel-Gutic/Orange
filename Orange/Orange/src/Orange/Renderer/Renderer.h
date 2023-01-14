@@ -19,7 +19,7 @@ namespace Orange
 		static void Begin();
 		static void End();
 
-		static void DrawTexture(const std::shared_ptr<Texture>& texture, const Float2& position);
+		static void DrawTexture(const std::shared_ptr<Texture>& texture, const Float2& position, float scale = 1.0f);
 		static void DrawQuad(const Float2& center, float side = 1.0f, const FColor& color = FColor::White);
 
 		static Renderer* Get();
