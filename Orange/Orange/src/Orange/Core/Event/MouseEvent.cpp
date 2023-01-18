@@ -8,9 +8,9 @@ namespace Orange
 {
 	const std::unordered_map<int, std::string> MouseButtonEvent::s_ButtonNames =
 	{
-		{ TOMATO_MOUSE_BUTTON_LEFT, "Left Button" },
-		{ TOMATO_MOUSE_BUTTON_RIGHT, "Right Button" },
-		{ TOMATO_MOUSE_BUTTON_MIDDLE, "Middle Button" },
+		{ ORANGE_MOUSE_BUTTON_LEFT, "Left Button" },
+		{ ORANGE_MOUSE_BUTTON_RIGHT, "Right Button" },
+		{ ORANGE_MOUSE_BUTTON_MIDDLE, "Middle Button" },
 	};
 
 	std::string MouseButtonEvent::ToString() const

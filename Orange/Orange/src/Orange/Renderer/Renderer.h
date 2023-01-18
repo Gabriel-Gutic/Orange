@@ -2,6 +2,8 @@
 #include "Shader.h"
 #include "VertexArray.h"
 #include "Texture.h"
+#include "Tileset.h"
+#include "Tilemap.h"
 
 
 namespace Orange
@@ -20,7 +22,11 @@ namespace Orange
 		static void End();
 
 		static void DrawTexture(const std::shared_ptr<Texture>& texture, const Float2& position, float scale = 1.0f);
+		static void DrawTile(const std::shared_ptr<Tileset>& tileset, uint32_t row, uint32_t column, const Float2& position, float scale = 1.0f);
+		static void DrawTile(const std::shared_ptr<Tile>& tile, const Float2& position, float scale = 1.0f);
 		static void DrawQuad(const Float2& center, float side = 1.0f, const FColor& color = FColor::White);
+		
+		static void DrawTilemap(const std::shared_ptr<Tilemap>& tilemap);
 
 		static Renderer* Get();
 	private:

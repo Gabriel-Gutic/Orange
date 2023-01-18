@@ -114,6 +114,10 @@
     <ClInclude Include="src\Orange\Core\Layer.h" />
     <ClInclude Include="src\Orange\Renderer\Camera.h" />
     <ClInclude Include="src\Orange\Core\Object.h" />
+    <ClInclude Include="src\Orange\Renderer\Tileset.h" />
+    <ClInclude Include="src\Orange\Renderer\Tile.h" />
+    <ClInclude Include="src\Orange\Renderer\Tilemap.h" />
+    <ClInclude Include="src\Orange\Core\Math\Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Orange\Core\App.cpp">
@@ -170,5 +174,9 @@
     <ClCompile Include="src\pchOrange.cpp" />
     <ClCompile Include="src\Orange\Renderer\Texture.cpp" />
     <ClCompile Include="src\Orange\Renderer\Camera.cpp" />
+    <ClCompile Include="src\Orange\Renderer\Tileset.cpp" />
+    <ClCompile Include="src\Orange\Renderer\Tile.cpp" />
+    <ClCompile Include="src\Orange\Renderer\Tilemap.cpp" />
+    <ClCompile Include="src\Orange\Core\Object.cpp" />
   </ItemGroup>
 </Project>

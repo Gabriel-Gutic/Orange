@@ -31,6 +31,9 @@ namespace Orange
 		m_VertexArray = VertexArray::CreateUnique({ 2, 4, 2, 1 }, vertexBuffer);
 
 		m_Shader = std::make_unique<Shader>("assets/Shaders/VertexShader.glsl", "assets/Shaders/FragmentShader.glsl");
+	
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
 
 	void Renderer::Initialize()
@@ -83,6 +86,40 @@ namespace Orange
 		}
 	}
 
+	void Renderer::DrawTile(const std::shared_ptr<Tileset>& tileset, uint32_t row, uint32_t column, const Float2& position, float scale)
+	{
+		if (tileset)
+		{
+			if (s_Data.VertexCounter + 6 >= MAX_VERTEX_NUMBER)
+				s_Instance->Flush();
+
+			float aspectRatio = tileset->GetAspectRatio();
+			float x_radius = scale / 2.0f;
+			float y_radius = x_radius / aspectRatio;
+
+			float texIndex = s_Instance->GetTextureIndex(tileset->GetTexture());
+
+			auto arr = tileset->GetTileCoords(row, column);
+
+			Vertex A(Float2(position.x - x_radius, position.y - y_radius), FColor::White, arr[0][0], texIndex);
+			Vertex B(Float2(position.x + x_radius, position.y - y_radius), FColor::White, arr[1][0], texIndex);
+			Vertex C(Float2(position.x + x_radius, position.y + y_radius), FColor::White, arr[1][1], texIndex);
+			Vertex D(Float2(position.x - x_radius, position.y + y_radius), FColor::White, arr[0][1], texIndex);
+
+			s_Data.Vertices[s_Data.VertexCounter++] = A;
+			s_Data.Vertices[s_Data.VertexCounter++] = B;
+			s_Data.Vertices[s_Data.VertexCounter++] = C;
+			s_Data.Vertices[s_Data.VertexCounter++] = A;
+			s_Data.Vertices[s_Data.VertexCounter++] = C;
+			s_Data.Vertices[s_Data.VertexCounter++] = D;
+		}
+	}
+
+	void Renderer::DrawTile(const std::shared_ptr<Tile>& tile, const Float2& position, float scale)
+	{
+		DrawTile(tile->GetSet(), tile->GetRow(), tile->GetColumn(), position, scale);
+	}
+
 	void Renderer::DrawQuad(const Float2& center, float side, const FColor& color)
 	{
 		if (s_Data.VertexCounter + 6 >= MAX_VERTEX_NUMBER)
@@ -101,6 +138,14 @@ namespace Orange
 		s_Data.Vertices[s_Data.VertexCounter++] = A;
 		s_Data.Vertices[s_Data.VertexCounter++] = C;
 		s_Data.Vertices[s_Data.VertexCounter++] = D;
+	}
+
+	void Renderer::DrawTilemap(const std::shared_ptr<Tilemap>& tilemap)
+	{
+		for (uint32_t i = 0; i < tilemap->GetRows(); i++)
+			for (uint32_t j = 0; j < tilemap->GetColumns(); j++)
+				if ((*tilemap)[i][j])
+					DrawTile((*tilemap)[i][j], tilemap->GetTransform().Position + Float2(i, j));
 	}
 
 	Renderer* Renderer::Get()

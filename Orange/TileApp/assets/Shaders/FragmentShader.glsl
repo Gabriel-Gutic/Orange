@@ -11,6 +11,9 @@ uniform sampler2D u_Textures[32];
 
 void main()
 {
+	if (o_Color.a < 0.5f)
+		discard;
+
 	if (o_TexIndex < 0.0f)
 	{
 		FragColor = o_Color;
@@ -19,5 +22,7 @@ void main()
 	{
 		int index = int(o_TexIndex + 0.1);
 		FragColor = o_Color * texture(u_Textures[index], o_TexCoords);
+		if (FragColor.a < 0.5f)
+			discard;
 	}
 }

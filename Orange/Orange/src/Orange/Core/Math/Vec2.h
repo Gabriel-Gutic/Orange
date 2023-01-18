@@ -29,6 +29,10 @@ namespace Orange
 
 		Vec2& operator=(const Vec2& other);
 
+		std::string ToString() const;
+		template <typename T>
+		friend std::ostream& operator<<(std::ostream& os, const Vec2<T>& v);
+
 		template <typename T>
 		friend Vec2 operator+(const Vec2& v1, const Vec2& v2);
 		template <typename T>
@@ -80,6 +84,14 @@ namespace Orange
 	}
 
 	template<typename T>
+	inline std::string Vec2<T>::ToString() const
+	{
+		std::stringstream ss;
+		ss << "(" << x << ", " << y << ")";
+		return ss.str();
+	}
+
+	template<typename T>
 	inline T& Vec2<T>::operator[](uint32_t index)
 	{
 		return data[index];
@@ -121,6 +133,13 @@ namespace Orange
 		x = x / other.x;
 		y = y / other.y;
 		return *this;
+	}
+
+	template<typename T>
+	std::ostream& operator<<(std::ostream& os, const Vec2<T>& v)
+	{
+		os << v.ToString();
+		return os;
 	}
 
 	template<typename T>

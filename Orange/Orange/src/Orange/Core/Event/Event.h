@@ -21,7 +21,7 @@ namespace Orange
 		virtual std::string ToString() const = 0;
 
 		template<typename E>
-		static const E Cast(const Event& e);
+		const E& Cast() const;
 	};
 
 #define	EVENT_SETUP(type) \
@@ -29,8 +29,8 @@ namespace Orange
 	virtual const char* GetName() const override { return #type; } 
 	
 	template<typename E>
-	inline const E Event::Cast(const Event& e)
+	inline const E& Event::Cast() const
 	{
-		return *dynamic_cast<const E*>(&e);
+		return *dynamic_cast<const E*>(this);
 	}
 }

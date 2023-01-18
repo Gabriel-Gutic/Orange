@@ -30,11 +30,8 @@ namespace Orange
 			false
 			})
 	{
-		ORANGE_PRINT("It's working!");
 		/* Initialize the library */
 		ORANGE_ASSERT(glfwInit(), "Failed to initialize GLFW!");
-
-		ORANGE_PRINT("It's working!");
 
 		/* Create a windowed mode window and its OpenGL context */
 		auto window = glfwCreateWindow(m_Data.Width, m_Data.Height, m_Data.Title.c_str(), NULL, NULL);
