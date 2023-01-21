@@ -1,3 +1,4 @@
 [submodule "Orange/Orange/dependencies/ImGui/imgui"]
 	path = Orange/Orange/dependencies/ImGui/imgui
 	url = https://github.com/ocornut/imgui.git
+	branch = docking

@@ -11,5 +11,6 @@ namespace Orange
 	public:
 		virtual void OnUpdate() {}
 		virtual void OnEvent(const Event& e) {}
+		virtual void OnImGui() {}
 	};
 }

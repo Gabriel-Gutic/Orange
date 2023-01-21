@@ -64,6 +64,12 @@
     <ClInclude Include="src\Orange\Core\File\File.h">
       <Filter>Orange\Core\File</Filter>
     </ClInclude>
+    <ClInclude Include="src\Orange\Core\ImGuiDevice.h">
+      <Filter>Orange\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Core\Layer.h">
+      <Filter>Orange\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Orange\Core\Logger\Logger.h">
       <Filter>Orange\Core\Logger</Filter>
     </ClInclude>
@@ -79,14 +85,23 @@
     <ClInclude Include="src\Orange\Core\Math\MathFunctions.h">
       <Filter>Orange\Core\Math</Filter>
     </ClInclude>
+    <ClInclude Include="src\Orange\Core\Math\Transform.h">
+      <Filter>Orange\Core\Math</Filter>
+    </ClInclude>
     <ClInclude Include="src\Orange\Core\Math\Vec2.h">
       <Filter>Orange\Core\Math</Filter>
     </ClInclude>
     <ClInclude Include="src\Orange\Core\Memory.h">
       <Filter>Orange\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Orange\Core\Object.h">
+      <Filter>Orange\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Orange\Core\Window.h">
       <Filter>Orange\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Renderer\Camera.h">
+      <Filter>Orange\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Orange\Renderer\Image.h">
       <Filter>Orange\Renderer</Filter>
@@ -100,6 +115,18 @@
     <ClInclude Include="src\Orange\Renderer\Shader.h">
       <Filter>Orange\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Orange\Renderer\Texture.h">
+      <Filter>Orange\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Renderer\Tile.h">
+      <Filter>Orange\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Renderer\Tilemap.h">
+      <Filter>Orange\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Renderer\Tileset.h">
+      <Filter>Orange\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Orange\Renderer\Vertex.h">
       <Filter>Orange\Renderer</Filter>
     </ClInclude>
@@ -110,14 +137,6 @@
       <Filter>Orange\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\pchOrange.h" />
-    <ClInclude Include="src\Orange\Renderer\Texture.h" />
-    <ClInclude Include="src\Orange\Core\Layer.h" />
-    <ClInclude Include="src\Orange\Renderer\Camera.h" />
-    <ClInclude Include="src\Orange\Core\Object.h" />
-    <ClInclude Include="src\Orange\Renderer\Tileset.h" />
-    <ClInclude Include="src\Orange\Renderer\Tile.h" />
-    <ClInclude Include="src\Orange\Renderer\Tilemap.h" />
-    <ClInclude Include="src\Orange\Core\Math\Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Orange\Core\App.cpp">
@@ -144,6 +163,9 @@
     <ClCompile Include="src\Orange\Core\File\File.cpp">
       <Filter>Orange\Core\File</Filter>
     </ClCompile>
+    <ClCompile Include="src\Orange\Core\ImGuiDevice.cpp">
+      <Filter>Orange\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Orange\Core\Logger\Logger.cpp">
       <Filter>Orange\Core\Logger</Filter>
     </ClCompile>
@@ -153,8 +175,14 @@
     <ClCompile Include="src\Orange\Core\Math\MathFunctions.cpp">
       <Filter>Orange\Core\Math</Filter>
     </ClCompile>
+    <ClCompile Include="src\Orange\Core\Object.cpp">
+      <Filter>Orange\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Orange\Core\Window.cpp">
       <Filter>Orange\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Orange\Renderer\Camera.cpp">
+      <Filter>Orange\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Orange\Renderer\Image.cpp">
       <Filter>Orange\Renderer</Filter>
@@ -165,6 +193,18 @@
     <ClCompile Include="src\Orange\Renderer\Shader.cpp">
       <Filter>Orange\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Orange\Renderer\Texture.cpp">
+      <Filter>Orange\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Orange\Renderer\Tile.cpp">
+      <Filter>Orange\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Orange\Renderer\Tilemap.cpp">
+      <Filter>Orange\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Orange\Renderer\Tileset.cpp">
+      <Filter>Orange\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Orange\Renderer\VertexArray.cpp">
       <Filter>Orange\Renderer</Filter>
     </ClCompile>
@@ -172,11 +212,5 @@
       <Filter>Orange\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\pchOrange.cpp" />
-    <ClCompile Include="src\Orange\Renderer\Texture.cpp" />
-    <ClCompile Include="src\Orange\Renderer\Camera.cpp" />
-    <ClCompile Include="src\Orange\Renderer\Tileset.cpp" />
-    <ClCompile Include="src\Orange\Renderer\Tile.cpp" />
-    <ClCompile Include="src\Orange\Renderer\Tilemap.cpp" />
-    <ClCompile Include="src\Orange\Core\Object.cpp" />
   </ItemGroup>
 </Project>

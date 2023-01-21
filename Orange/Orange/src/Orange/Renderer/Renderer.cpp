@@ -30,7 +30,7 @@ namespace Orange
 		auto vertexBuffer = VertexBuffer::CreateShared(BufferType::Dynamic, nullptr, sizeof(RendererData::Vertices));
 		m_VertexArray = VertexArray::CreateUnique({ 2, 4, 2, 1 }, vertexBuffer);
 
-		m_Shader = std::make_unique<Shader>("assets/Shaders/VertexShader.glsl", "assets/Shaders/FragmentShader.glsl");
+		m_Shader = std::make_unique<Shader>("Assets/Shaders/VertexShader.glsl", "Assets/Shaders/FragmentShader.glsl");
 	
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -142,10 +142,10 @@ namespace Orange
 
 	void Renderer::DrawTilemap(const std::shared_ptr<Tilemap>& tilemap)
 	{
-		for (uint32_t i = 0; i < tilemap->GetRows(); i++)
-			for (uint32_t j = 0; j < tilemap->GetColumns(); j++)
+		for (int i = 0; i < tilemap->GetRows(); i++)
+			for (int j = 0; j < tilemap->GetColumns(); j++)
 				if ((*tilemap)[i][j])
-					DrawTile((*tilemap)[i][j], tilemap->GetTransform().Position + Float2(i, j));
+					DrawTile((*tilemap)[i][j], tilemap->GetTransform().Position + Float2(i, -j));
 	}
 
 	Renderer* Renderer::Get()

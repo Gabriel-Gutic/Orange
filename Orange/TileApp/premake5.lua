@@ -22,7 +22,9 @@ project "TileApp"
 	{
 		"src",
 		orange .. "src",
+		orange .. "src/Orange",
 		orange .. "dependencies/spdlog/include",
+		orange .. "dependencies/ImGui",
 	}
 
 	links

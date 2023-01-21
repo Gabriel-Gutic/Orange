@@ -2,6 +2,7 @@
 #include "App.h"
 
 #include "Renderer/Renderer.h"
+#include "ImGuiDevice.h"
 
 
 namespace Orange
@@ -17,6 +18,8 @@ namespace Orange
 		m_Camera = std::make_unique<Camera>();
 
 		Renderer::Initialize();
+
+		ImGuiDevice::Initialize();
 	}
 
 	App::~App()
@@ -24,6 +27,8 @@ namespace Orange
 		for (auto& layer : m_LayerStack)
 			delete layer;
 		m_LayerStack.clear();
+
+		ImGuiDevice::Terminate();
 
 		Renderer::Terminate();
 	}
@@ -57,6 +62,14 @@ namespace Orange
 				layer->OnUpdate();
 
 			Renderer::End();
+			
+			ImGuiDevice::Begin();
+
+			for (auto& layer : m_LayerStack)
+				layer->OnImGui();
+
+			ImGuiDevice::End();
+
 
 			m_Window->SwapBuffers();
 		}

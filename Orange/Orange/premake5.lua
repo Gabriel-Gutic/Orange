@@ -2,6 +2,7 @@
 group "Dependencies"
 	include "dependencies/GLFW"
 	include "dependencies/Glad"
+	include "dependencies/ImGui"
 group ""
 
 project "Orange"
@@ -30,12 +31,15 @@ project "Orange"
 		"dependencies/spdlog/include",
 		"dependencies/GLFW/include",
 		"dependencies/Glad/include",
+		"dependencies/ImGui",
+		"dependencies/ImGui/imgui",
 	}
 
 	links
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 	}
 
 	filter "system:windows"

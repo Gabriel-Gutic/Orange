@@ -6,8 +6,8 @@ public:
 	TileAppLayer()
 	{
 		m_Tilemap = std::make_shared<Orange::Tilemap>();
-		m_Tileset = Orange::Tileset::CreateShared("assets/Images/tileset.png", Orange::Float2(16, 16));
-		m_Texture = Orange::Texture::CreateShared("assets/Images/tileset.png");
+		m_Tileset = Orange::Tileset::CreateShared("Assets/Images/tileset.png", Orange::Float2(16, 16));
+		m_Texture = Orange::Texture::CreateShared("Assets/Images/tileset.png");
 	
 		Orange::App::GetCamera()->SetWidth(20.0f);
 
@@ -56,6 +56,11 @@ public:
 				Orange::App::GetCamera()->GetY() += 0.1f;
 			}
 		}
+	}
+
+	virtual void OnImGui() override
+	{
+		ImGui::ShowDemoWindow((bool*)0);
 	}
 private:
 	std::shared_ptr<Orange::Tilemap> m_Tilemap;
