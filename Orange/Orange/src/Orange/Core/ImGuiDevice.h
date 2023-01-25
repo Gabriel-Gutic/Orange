@@ -1,4 +1,5 @@
 #pragma once
+#include "Renderer/FrameBuffer.h"
 
 
 namespace Orange
@@ -20,6 +21,8 @@ namespace Orange
 		static void ShowDockspace();
 		static void HideDockspace();
 		static void Dockspace();
+
+		static void RenderWindow(const std::shared_ptr<FrameBuffer>& fb, bool centered = false);
 	private:
 		void SetDarkThemeColors();
 	private:

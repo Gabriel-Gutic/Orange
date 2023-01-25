@@ -9,7 +9,7 @@ namespace Orange
 		Camera();
 		~Camera() = default;
 
-		Mat3 GetProjectionView() const;
+		Mat3 GetProjectionView(bool flippedVertically = false) const;
 
 		void SetWidth(float width);
 		void SetHeight(float height);

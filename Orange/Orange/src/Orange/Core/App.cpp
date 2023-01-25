@@ -37,8 +37,6 @@ namespace Orange
 	{
 		while (m_IsRunning)
 		{
-			m_Window->Clear(FColor::Blue);
-
 			while (!m_EventQueue.empty())
 			{
 				Event& e = *m_EventQueue.front();
@@ -57,6 +55,8 @@ namespace Orange
 			}
 
 			Renderer::Begin();
+
+			m_Window->Clear(FColor::Blue);
 
 			for (auto& layer : m_LayerStack)
 				layer->OnUpdate();

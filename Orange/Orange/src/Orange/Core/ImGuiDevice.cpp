@@ -132,6 +132,30 @@ namespace Orange
 		ImGui::End();
 	}
 
+	void ImGuiDevice::RenderWindow(const std::shared_ptr<FrameBuffer>& fb, bool centered)
+	{
+		if (fb)
+		{
+			ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+			ImGui::Begin("RenderWindow");
+
+			auto [w, h] = fb->GetSize().data;
+			ImVec2 size = ImGui::GetWindowSize();
+
+			void* id = (void*)fb->GetTexture()->GetID();
+			float height = (size.x * h) / (float)w;
+
+			if (centered)
+				ImGui::SetCursorPos(ImVec2(0.0f, (size.y - height) / 2.0f));
+			ImGui::Image((ImTextureID)id, ImVec2(size.x, height));
+
+			ImGui::End();
+			ImGui::PopStyleVar();
+		}
+		else
+			ORANGE_ERROR("Invalid FrameBuffer!");
+	}
+
     void ImGuiDevice::SetDarkThemeColors()
     {
 		auto& colors = ImGui::GetStyle().Colors;

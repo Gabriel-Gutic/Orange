@@ -51,12 +51,37 @@ namespace Orange
 	{
 		auto& ins = s_Instance;
 
-		ins->m_Shader->SetMat3("u_PV", App::GetCamera()->GetProjectionView());
+		bool drawToFramebuffer = ins->m_FrameBuffer != nullptr;
+		if (drawToFramebuffer)
+		{
+			const auto& [w, h] = App::GetWindow()->GetSize().data;
+			ins->m_FrameBuffer->SetSize(w, h);
+			ins->m_FrameBuffer->Bind();
+			ins->m_FrameBuffer->GetTexture()->Bind();
+		}
+		else
+		{
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		}
+
+		ins->m_Shader->SetMat3("u_PV", App::GetCamera()->GetProjectionView(drawToFramebuffer));
 	}
 
 	void Renderer::End()
 	{
 		s_Instance->Flush();
+
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	}
+
+	void Renderer::SetFrameBuffer(const std::shared_ptr<FrameBuffer>& fb)
+	{
+		s_Instance->m_FrameBuffer = fb;
+	}
+
+	const std::shared_ptr<FrameBuffer>& Renderer::GetFrameBuffer()
+	{
+		return s_Instance->m_FrameBuffer;
 	}
 
 	void Renderer::DrawTexture(const std::shared_ptr<Texture>& texture, const Float2& position, float scale)

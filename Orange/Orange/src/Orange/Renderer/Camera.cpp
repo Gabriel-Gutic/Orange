@@ -11,7 +11,7 @@ namespace Orange
 	{
 	}
 
-	Mat3 Camera::GetProjectionView() const
+	Mat3 Camera::GetProjectionView(bool flippedVertically) const
 	{
 		float w, h;
 		if (m_Size.x != 0.0f)
@@ -34,6 +34,9 @@ namespace Orange
 		M[1][1] = 2 / (t - b);
 		M[0][2] = (-r - l) / (r - l);
 		M[1][2] = (-t - b) / (t - b);
+
+		if (flippedVertically)
+			M[1][1] *= -1;
 
 		return M;
 	}

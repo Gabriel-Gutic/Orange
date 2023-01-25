@@ -4,6 +4,7 @@
 #include "Texture.h"
 #include "Tileset.h"
 #include "Tilemap.h"
+#include "FrameBuffer.h"
 
 
 namespace Orange
@@ -21,6 +22,9 @@ namespace Orange
 		static void Begin();
 		static void End();
 
+		static void SetFrameBuffer(const std::shared_ptr<FrameBuffer>& fb);
+		static const std::shared_ptr<FrameBuffer>& GetFrameBuffer();
+
 		static void DrawTexture(const std::shared_ptr<Texture>& texture, const Float2& position, float scale = 1.0f);
 		static void DrawTile(const std::shared_ptr<Tileset>& tileset, uint32_t row, uint32_t column, const Float2& position, float scale = 1.0f);
 		static void DrawTile(const std::shared_ptr<Tile>& tile, const Float2& position, float scale = 1.0f);
@@ -35,6 +39,7 @@ namespace Orange
 	private:
 		std::unique_ptr<Shader> m_Shader;
 		std::unique_ptr<VertexArray> m_VertexArray;
+		std::shared_ptr<FrameBuffer> m_FrameBuffer;
 
 		static Renderer* s_Instance;
 	};

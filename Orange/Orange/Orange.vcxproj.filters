@@ -137,6 +137,7 @@
       <Filter>Orange\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\pchOrange.h" />
+    <ClInclude Include="src\Orange\Renderer\FrameBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Orange\Core\App.cpp">
@@ -212,5 +213,6 @@
       <Filter>Orange\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\pchOrange.cpp" />
+    <ClCompile Include="src\Orange\Renderer\FrameBuffer.cpp" />
   </ItemGroup>
 </Project>

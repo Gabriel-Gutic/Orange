@@ -5,6 +5,11 @@ class TileAppLayer : public Orange::Layer
 public:
 	TileAppLayer()
 	{
+		Orange::ImGuiDevice::ShowDockspace();
+
+		m_FrameBuffer = std::make_shared<Orange::FrameBuffer>();
+		Orange::Renderer::SetFrameBuffer(m_FrameBuffer);
+
 		m_Tilemap = std::make_shared<Orange::Tilemap>();
 		m_Tileset = Orange::Tileset::CreateShared("Assets/Images/tileset.png", Orange::Float2(16, 16));
 		m_Texture = Orange::Texture::CreateShared("Assets/Images/tileset.png");
@@ -61,11 +66,14 @@ public:
 	virtual void OnImGui() override
 	{
 		ImGui::ShowDemoWindow((bool*)0);
+
+		Orange::ImGuiDevice::RenderWindow(m_FrameBuffer);
 	}
 private:
 	std::shared_ptr<Orange::Tilemap> m_Tilemap;
 	std::shared_ptr<Orange::Tileset> m_Tileset;
 	std::shared_ptr<Orange::Texture> m_Texture;
+	std::shared_ptr<Orange::FrameBuffer> m_FrameBuffer;
 };
 
 
