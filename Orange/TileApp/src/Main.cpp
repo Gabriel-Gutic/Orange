@@ -16,7 +16,6 @@ public:
 	
 		Orange::App::GetCamera()->SetWidth(20.0f);
 
-
 		auto& tilemap = *m_Tilemap;
 		tilemap[0][0] = Orange::Tile::CreateShared(m_Tileset, 4, 8);
 		tilemap[1][1] = Orange::Tile::CreateShared(m_Tileset, 4, 8);
@@ -29,9 +28,7 @@ public:
 	}
 
 	virtual void OnUpdate() override
-	{ 
-
-
+	{
 		//Orange::Renderer::DrawQuad(Orange::Float2(0.0f, 0.0f));
 
 		//Orange::Renderer::DrawTexture(m_Texture, Orange::Float2(0.0f, 0.0f));
@@ -75,6 +72,12 @@ public:
 		ImGui::ShowDemoWindow((bool*)0);
 
 		Orange::ImGuiDevice::RenderWindow(m_FrameBuffer);
+
+		ImGui::Begin("Scene");
+
+		Orange::App::GetScene()->ToImGuiTree();
+
+		ImGui::End();
 	}
 private:
 	std::shared_ptr<Orange::Tilemap> m_Tilemap;

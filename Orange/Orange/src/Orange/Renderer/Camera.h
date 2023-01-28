@@ -1,9 +1,10 @@
 #pragma once
+#include "Core/Object.h"
 
 
 namespace Orange
 {
-	class Camera
+	class Camera : public Object
 	{
 	public:
 		Camera();

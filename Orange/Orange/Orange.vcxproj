@@ -117,6 +117,7 @@
     <ClInclude Include="src\Orange\Renderer\Image.h" />
     <ClInclude Include="src\Orange\Renderer\Renderer.h" />
     <ClInclude Include="src\Orange\Renderer\RendererData.h" />
+    <ClInclude Include="src\Orange\Renderer\Scene.h" />
     <ClInclude Include="src\Orange\Renderer\Shader.h" />
     <ClInclude Include="src\Orange\Renderer\Texture.h" />
     <ClInclude Include="src\Orange\Renderer\Tile.h" />
@@ -146,6 +147,7 @@
     <ClCompile Include="src\Orange\Renderer\FrameBuffer.cpp" />
     <ClCompile Include="src\Orange\Renderer\Image.cpp" />
     <ClCompile Include="src\Orange\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Orange\Renderer\Scene.cpp" />
     <ClCompile Include="src\Orange\Renderer\Shader.cpp" />
     <ClCompile Include="src\Orange\Renderer\Texture.cpp" />
     <ClCompile Include="src\Orange\Renderer\Tile.cpp" />

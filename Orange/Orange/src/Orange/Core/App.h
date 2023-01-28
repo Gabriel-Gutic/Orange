@@ -1,8 +1,10 @@
 #pragma once
-#include "Event/Events.h"
-#include "Orange/Renderer/Camera.h"
 #include "Window.h"
 #include "Layer.h"
+#include "Event/Events.h"
+
+#include "Renderer/Camera.h"
+#include "Renderer/Scene.h"
 
 
 namespace Orange
@@ -18,6 +20,7 @@ namespace Orange
 
 		static std::unique_ptr<Window>& GetWindow();
 		static std::shared_ptr<Camera>& GetCamera() { return s_Instance->m_Camera; }
+		static std::shared_ptr<Scene>& GetScene() { return s_Instance->m_Scene; }
 
 		static App* Create();
 
@@ -30,6 +33,7 @@ namespace Orange
 		std::queue<Event*> m_EventQueue;
 		std::vector<Layer*> m_LayerStack;
 
+		std::shared_ptr<Scene> m_Scene;
 		std::shared_ptr<Camera> m_Camera;
 		std::unique_ptr<Window> m_Window;
 

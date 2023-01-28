@@ -138,6 +138,7 @@
     </ClInclude>
     <ClInclude Include="src\pchOrange.h" />
     <ClInclude Include="src\Orange\Renderer\FrameBuffer.h" />
+    <ClInclude Include="src\Orange\Renderer\Scene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Orange\Core\App.cpp">
@@ -214,5 +215,6 @@
     </ClCompile>
     <ClCompile Include="src\pchOrange.cpp" />
     <ClCompile Include="src\Orange\Renderer\FrameBuffer.cpp" />
+    <ClCompile Include="src\Orange\Renderer\Scene.cpp" />
   </ItemGroup>
 </Project>

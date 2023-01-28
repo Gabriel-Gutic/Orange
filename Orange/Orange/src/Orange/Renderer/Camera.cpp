@@ -7,7 +7,7 @@
 namespace Orange
 {
 	Camera::Camera()
-		:m_Position(), m_Size()
+		:Object("Camera"), m_Position(), m_Size()
 	{
 	}
 

@@ -16,6 +16,7 @@ namespace Orange
 
 		m_Window = std::make_unique<Window>();
 		m_Camera = std::make_unique<Camera>();
+		m_Scene = std::make_shared<Scene>();
 
 		Renderer::Initialize();
 
