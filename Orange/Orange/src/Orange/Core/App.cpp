@@ -46,7 +46,7 @@ namespace Orange
 					Exit();
 				}
 
-				ORANGE_PRINT(e.ToString());
+				//ORANGE_PRINT(e.ToString());
 
 				for (auto& layer : m_LayerStack)
 					layer->OnEvent(e);

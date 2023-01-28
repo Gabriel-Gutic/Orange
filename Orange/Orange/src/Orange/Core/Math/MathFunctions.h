@@ -12,21 +12,21 @@ namespace Orange
 		const float nan = std::nanf("");
 		const float inf = std::numeric_limits<float>::infinity();
 
-		unsigned int NumberOfDigits(int number);
-		unsigned int NumberOfDigits(unsigned int number);
-		unsigned int NumberOfDigits(long long number);
-		unsigned int NumberOfDigits(unsigned long long number);
+		uint32_t NumberOfDigits(int number);
+		uint32_t NumberOfDigits(uint32_t number);
+		uint32_t NumberOfDigits(int64_t number);
+		uint32_t NumberOfDigits(uint64_t number);
 		std::string ToString(int number);
-		std::string ToString(unsigned int number);
-		std::string ToString(long long number);
-		std::string ToString(unsigned long long number);
-		std::string ToString(float number, unsigned int precision = 2);
-		std::string ToString(double number, unsigned int precision = 2);
+		std::string ToString(uint32_t number);
+		std::string ToString(int64_t number);
+		std::string ToString(uint64_t number);
+		std::string ToString(float number, uint32_t precision = 2);
+		std::string ToString(double number, uint32_t precision = 2);
 		std::string ToString(bool value);
 
 
-		float Trunc(float number, unsigned int precision = 2);
-		double Trunc(double number, unsigned int precision = 2);
+		float Trunc(float number, uint32_t precision = 2);
+		double Trunc(double number, uint32_t precision = 2);
 
 		bool IsNaN(float x);
 		bool IsInf(float x);

@@ -15,7 +15,9 @@ namespace Orange
 {
 	ImGuiDevice* ImGuiDevice::s_Instance = nullptr;
 	ImGuiDevice::ImGuiDevice()
-		:m_IsDockspaceShown(false)
+		:m_IsDockspaceShown(false), 
+		m_RenderWindowMousePos({ 0.0f, 0.0f }),
+		m_RenderWindowSize({ 0.0f, 0.0f })
 	{
         // Setup Dear ImGui context
         IMGUI_CHECKVERSION();
@@ -146,14 +148,38 @@ namespace Orange
 			float height = (size.x * h) / (float)w;
 
 			if (centered)
-				ImGui::SetCursorPos(ImVec2(0.0f, (size.y - height) / 2.0f));
+			{
+				float space = (size.y - height) / 2.0f;
+				ImGui::SetCursorPos(ImVec2(0.0f, space));
+			}
+
+			s_Instance->m_RenderWindowMousePos = Float2(
+				ImGui::GetMousePos().x - ImGui::GetCursorScreenPos().x,
+				-static_cast<int>(ImGui::GetMousePos().y - ImGui::GetCursorScreenPos().y - height)
+			);
+
 			ImGui::Image((ImTextureID)id, ImVec2(size.x, height));
+
+			s_Instance->m_RenderWindowSize = Float2(
+				size.x,
+				height
+			);
 
 			ImGui::End();
 			ImGui::PopStyleVar();
 		}
 		else
 			ORANGE_ERROR("Invalid FrameBuffer!");
+	}
+
+	Float2 ImGuiDevice::RenderWindowMousePos()
+	{
+		return s_Instance->m_RenderWindowMousePos;
+	}
+
+	Float2 ImGuiDevice::RenderWindowSize()
+	{
+		return s_Instance->m_RenderWindowSize;
 	}
 
     void ImGuiDevice::SetDarkThemeColors()

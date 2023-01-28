@@ -4,50 +4,52 @@
 
 namespace Orange
 {
-	unsigned int Math::NumberOfDigits(int number)
+	uint32_t Math::NumberOfDigits(int number)
 	{
-		return (unsigned int)log10(number) + 1;
+		return (uint32_t)log10(number) + 1;
 	}
 
-	unsigned int Math::NumberOfDigits(unsigned int number)
+	uint32_t Math::NumberOfDigits(uint32_t number)
 	{
-		return (unsigned int)log10(number) + 1;
+		return (uint32_t)log10(number) + 1;
 	}
 
-	unsigned int Math::NumberOfDigits(long long number)
+	uint32_t Math::NumberOfDigits(int64_t number)
 	{
-		return (unsigned int)log10(number) + 1;
+		return (uint32_t)log10(number) + 1;
 	}
-	unsigned int Math::NumberOfDigits(unsigned long long number)
+
+	uint32_t Math::NumberOfDigits(uint64_t number)
 	{
-		return (unsigned int)log10(number) + 1;
+		return (uint32_t)log10(number) + 1;
 	}
+
 	std::string Math::ToString(int number)
 	{
 		return std::to_string(number);
 	}
 
-	std::string Math::ToString(unsigned int number)
+	std::string Math::ToString(uint32_t number)
 	{
 		return std::to_string(number);
 	}
 
-	std::string Math::ToString(long long number)
+	std::string Math::ToString(int64_t number)
 	{
 		return std::to_string(number);
 	}
 
-	std::string Math::ToString(unsigned long long number)
+	std::string Math::ToString(uint64_t number)
 	{
 		return std::to_string(number);
 	}
 
-	std::string Math::ToString(float number, unsigned int precision)
+	std::string Math::ToString(float number, uint32_t precision)
 	{
 		long long a = (long long)number;
 		float b = Abs(number - a);
 
-		for (unsigned int i = 0; i < precision; i++)
+		for (uint32_t i = 0; i < precision; i++)
 			b *= 10;
 
 		long long c = (long long)b;
@@ -59,12 +61,12 @@ namespace Orange
 		return std::to_string(a) + "." + std::to_string(c);
 	}
 
-	std::string Math::ToString(double number, unsigned int precision)
+	std::string Math::ToString(double number, uint32_t precision)
 	{
 		long long a = (long long)number;
 		double b = Abs(number - a);
 
-		for (unsigned int i = 0; i < precision; i++)
+		for (uint32_t i = 0; i < precision; i++)
 			b *= 10;
 
 		long long c = (long long)b;
@@ -81,20 +83,20 @@ namespace Orange
 		return value ? "True" : "False";
 	}
 
-	float Math::Trunc(float number, unsigned int precision)
+	float Math::Trunc(float number, uint32_t precision)
 	{
-		unsigned int power = 1;
-		for (unsigned int i = 0; i < precision; i++)
+		uint32_t power = 1;
+		for (uint32_t i = 0; i < precision; i++)
 			power *= 10;
-		return floorf(number * power) / (float)power;
+		return floorf(number * power) / static_cast<float>(power);
 	}
 
-	double Math::Trunc(double number, unsigned int precision)
+	double Math::Trunc(double number, uint32_t precision)
 	{
-		unsigned int power = 1;
-		for (unsigned int i = 0; i < precision; i++)
+		uint32_t power = 1;
+		for (uint32_t i = 0; i < precision; i++)
 			power *= 10;
-		return floor(number * power) / (double)power;
+		return floor(number * power) / static_cast<double>(power);
 	}
 
 	bool Math::IsNaN(float x)
@@ -127,17 +129,17 @@ namespace Orange
 		if (x < 0)
 			return nan;
 
-		long i;
+		int i;
 		float x2, y;
 		const float threehalfs = 1.5F;
 
 		x2 = x * 0.5F;
 		y = x;
-		i = *(long*)&y;								// evil floating point bit level hacking
-		i = 0x5f3759df - (i >> 1);					// what the fuck? 
+		i = *(int*)&y;							// evil floating point bit level hacking
+		i = 0x5f3759df - (i >> 1);				// what the fuck? 
 		y = *(float*)&i;
-		y = y * (threehalfs - (x2 * y * y));		// 1st iteration
-		y = y * (threehalfs - (x2 * y * y));   // 2nd iteration, this can be removed
+		y = y * (threehalfs - (x2 * y * y));	// 1st iteration
+		y = y * (threehalfs - (x2 * y * y));	// 2nd iteration, this can be removed
 
 		return y;
 	}

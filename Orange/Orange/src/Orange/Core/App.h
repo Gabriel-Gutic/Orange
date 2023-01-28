@@ -17,7 +17,7 @@ namespace Orange
 		void Exit();
 
 		static std::unique_ptr<Window>& GetWindow();
-		static std::unique_ptr<Camera>& GetCamera() { return s_Instance->m_Camera; }
+		static std::shared_ptr<Camera>& GetCamera() { return s_Instance->m_Camera; }
 
 		static App* Create();
 
@@ -30,7 +30,7 @@ namespace Orange
 		std::queue<Event*> m_EventQueue;
 		std::vector<Layer*> m_LayerStack;
 
-		std::unique_ptr<Camera> m_Camera;
+		std::shared_ptr<Camera> m_Camera;
 		std::unique_ptr<Window> m_Window;
 
 		static App* s_Instance;

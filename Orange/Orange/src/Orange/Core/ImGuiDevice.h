@@ -23,10 +23,14 @@ namespace Orange
 		static void Dockspace();
 
 		static void RenderWindow(const std::shared_ptr<FrameBuffer>& fb, bool centered = false);
+		static Float2 RenderWindowMousePos();
+		static Float2 RenderWindowSize();
 	private:
 		void SetDarkThemeColors();
 	private:
 		bool m_IsDockspaceShown;
+		Float2 m_RenderWindowMousePos;
+		Float2 m_RenderWindowSize;
 		
 		static ImGuiDevice* s_Instance;
 	};

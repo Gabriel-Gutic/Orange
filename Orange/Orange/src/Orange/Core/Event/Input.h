@@ -1,18 +1,16 @@
 #pragma once
+#include "Renderer/Camera.h"
 
 
-namespace Tomato
+namespace Orange::Input
 {
-	//class Input
-	//{
-	//private:
-	//	Input() = delete;
-	//public:
-	//	static bool Keyboard(int key);
-	//	static bool Mouse(int button);
-	//	static Float2 MousePos();
-	//	static Float3 MouseWorldCoords();
-	//	static double GetMouseX();
-	//	static double GetMouseY();
-	//};
+	bool Keyboard(int key);
+	bool Mouse(int button);
+	Float2 MousePos();
+	Float2 MouseToWorldCoords(const std::shared_ptr<Camera>& camera);
+	float MouseX();
+	float MouseY();
+	Float2 ScreenSize();
+	float ScreenWidth();
+	float ScreenHeight();
 }

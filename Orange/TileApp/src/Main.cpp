@@ -30,6 +30,8 @@ public:
 
 	virtual void OnUpdate() override
 	{ 
+
+
 		//Orange::Renderer::DrawQuad(Orange::Float2(0.0f, 0.0f));
 
 		//Orange::Renderer::DrawTexture(m_Texture, Orange::Float2(0.0f, 0.0f));
@@ -37,6 +39,11 @@ public:
 		//Orange::Renderer::DrawTile(m_Tileset, 4, 8, Orange::Float2(0.0f, 0.0f));
 	
 		Orange::Renderer::DrawTilemap(m_Tilemap);
+
+		if (Orange::Input::Keyboard(ORANGE_KEY_0))
+		{
+			PRINT("It's working!");
+		}
 	}
 
 	virtual void OnEvent(const Orange::Event& e) override
