@@ -15,6 +15,8 @@ namespace Orange
 		App();
 		virtual ~App();
 
+		static void Main(int argc, char** args);
+
 		void Run();
 		void Exit();
 

@@ -34,6 +34,17 @@ namespace Orange
 		Renderer::Terminate();
 	}
 
+	void App::Main(int argc, char** args)
+	{
+		Orange::Logger::Initialize();
+
+		auto* app = App::Create();
+
+		app->Run();
+
+		delete app;
+	}
+
 	void App::Run()
 	{
 		while (m_IsRunning)
