@@ -1,6 +1,8 @@
 #include "pchOrange.h"
 #include "MathFunctions.h"
 
+#include "RandomEngine.h"
+
 
 namespace Orange
 {
@@ -81,6 +83,31 @@ namespace Orange
 	std::string Math::ToString(bool value)
 	{
 		return value ? "True" : "False";
+	}
+
+	int64_t Math::RandomInt64(int64_t a, int64_t b)
+	{
+		return RandomEngine::Get().RandomInt64(a, b);
+	}
+
+	uint64_t RandomUInt64(uint64_t a, uint64_t b)
+	{
+		return RandomEngine::Get().RandomUInt64(a, b);
+	}
+
+	int RandomInt(int a, int b)
+	{
+		return RandomEngine::Get().RandomInt(a, b);
+	}
+
+	uint32_t RandomUInt(uint32_t a, uint32_t b)
+	{
+		return RandomEngine::Get().RandomUInt(a, b);
+	}
+
+	float RandomFloat(float a, float b)
+	{
+		return RandomEngine::Get().RandomFloat(a, b);
 	}
 
 	float Math::Trunc(float number, uint32_t precision)

@@ -139,6 +139,8 @@
     <ClInclude Include="src\pchOrange.h" />
     <ClInclude Include="src\Orange\Renderer\FrameBuffer.h" />
     <ClInclude Include="src\Orange\Renderer\Scene.h" />
+    <ClInclude Include="src\Orange\Core\UUID.h" />
+    <ClInclude Include="src\Orange\Core\Math\RandomEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Orange\Core\App.cpp">
@@ -216,5 +218,7 @@
     <ClCompile Include="src\pchOrange.cpp" />
     <ClCompile Include="src\Orange\Renderer\FrameBuffer.cpp" />
     <ClCompile Include="src\Orange\Renderer\Scene.cpp" />
+    <ClCompile Include="src\Orange\Core\UUID.cpp" />
+    <ClCompile Include="src\Orange\Core\Math\RandomEngine.cpp" />
   </ItemGroup>
 </Project>

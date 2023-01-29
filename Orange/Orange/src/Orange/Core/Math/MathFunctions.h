@@ -25,6 +25,22 @@ namespace Orange
 		std::string ToString(bool value);
 
 
+		//Generate random int64 value on the closed interval [a, b]
+		int64_t RandomInt64(int64_t a = std::numeric_limits<int64_t>::min(), int64_t b = std::numeric_limits<int64_t>::max());
+
+		//Generate random uint64 value on the closed interval [a, b]
+		uint64_t RandomUInt64(uint64_t a = 0, uint64_t b = std::numeric_limits<uint64_t>::max());
+		
+		//Generate random int32 value on the closed interval [a, b]
+		int RandomInt(int a = std::numeric_limits<int>::min(), int b = std::numeric_limits<int>::max());
+		
+		//Generate random uint32 value on the closed interval [a, b]
+		uint32_t RandomUInt(uint32_t a = 0, uint32_t b = std::numeric_limits<uint32_t>::max());
+		
+		//Generate random floating-point value on the interval [a, b)
+		float RandomFloat(float a = 0.0f, float b = 1.0f);
+
+
 		float Trunc(float number, uint32_t precision = 2);
 		double Trunc(double number, uint32_t precision = 2);
 
