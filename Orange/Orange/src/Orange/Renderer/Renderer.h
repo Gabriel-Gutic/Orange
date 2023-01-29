@@ -30,7 +30,7 @@ namespace Orange
 		static void DrawTile(const std::shared_ptr<Tile>& tile, const Float2& position, float scale = 1.0f);
 		static void DrawQuad(const Float2& center, float side = 1.0f, const FColor& color = FColor::White);
 		
-		static void DrawTilemap(const std::shared_ptr<Tilemap>& tilemap);
+		static void DrawTilemap(const Tilemap& tilemap);
 
 		static Renderer* Get();
 	private:

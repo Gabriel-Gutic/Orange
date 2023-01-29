@@ -18,6 +18,8 @@ namespace Orange
 
 		uint32_t GetRows() const;
 		uint32_t GetColumns() const;
+
+		virtual void Draw() override;
 	protected:
 		std::vector<std::vector<std::shared_ptr<Tile>>> m_Tiles;
 	};

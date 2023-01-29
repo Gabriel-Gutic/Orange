@@ -62,6 +62,8 @@ namespace Orange
 			for (auto& layer : m_LayerStack)
 				layer->OnUpdate();
 
+			m_Scene->Draw();
+
 			Renderer::End();
 			
 			ImGuiDevice::Begin();

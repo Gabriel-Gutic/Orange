@@ -9,6 +9,8 @@ namespace Orange
 	public:
 		Scene();
 		~Scene() = default;
+
+		virtual void Draw() override;
 	private:
 	};
 }

@@ -20,6 +20,8 @@ public:
 		tilemap[0][0] = Orange::Tile::CreateShared(m_Tileset, 4, 8);
 		tilemap[1][1] = Orange::Tile::CreateShared(m_Tileset, 4, 8);
 		tilemap[2][2] = Orange::Tile::CreateShared(m_Tileset, 4, 8);
+	
+		Orange::App::GetScene()->PushChild(m_Tilemap);
 	}
 
 	~TileAppLayer()
@@ -34,13 +36,6 @@ public:
 		//Orange::Renderer::DrawTexture(m_Texture, Orange::Float2(0.0f, 0.0f));
 
 		//Orange::Renderer::DrawTile(m_Tileset, 4, 8, Orange::Float2(0.0f, 0.0f));
-	
-		Orange::Renderer::DrawTilemap(m_Tilemap);
-
-		if (Orange::Input::Keyboard(ORANGE_KEY_0))
-		{
-			PRINT("It's working!");
-		}
 	}
 
 	virtual void OnEvent(const Orange::Event& e) override

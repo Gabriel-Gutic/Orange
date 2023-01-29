@@ -165,12 +165,12 @@ namespace Orange
 		s_Data.Vertices[s_Data.VertexCounter++] = D;
 	}
 
-	void Renderer::DrawTilemap(const std::shared_ptr<Tilemap>& tilemap)
+	void Renderer::DrawTilemap(const Tilemap& tilemap)
 	{
-		for (int i = 0; i < tilemap->GetRows(); i++)
-			for (int j = 0; j < tilemap->GetColumns(); j++)
-				if ((*tilemap)[i][j])
-					DrawTile((*tilemap)[i][j], tilemap->GetTransform().Position + Float2(i, -j));
+		for (int i = 0; i < tilemap.GetRows(); i++)
+			for (int j = 0; j < tilemap.GetColumns(); j++)
+				if (tilemap[i][j])
+					DrawTile(tilemap[i][j], tilemap.GetTransform().Position + Float2(i, -j));
 	}
 
 	Renderer* Renderer::Get()

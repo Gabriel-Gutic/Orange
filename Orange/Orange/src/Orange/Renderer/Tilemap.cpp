@@ -1,10 +1,13 @@
 #include "pchOrange.h"
 #include "Tilemap.h"
 
+#include "Renderer.h"
+
 
 namespace Orange
 {
 	Tilemap::Tilemap(uint32_t rows, uint32_t cols)
+		:Object("Tilemap")
 	{
 		Resize(rows, cols);
 	}
@@ -34,5 +37,10 @@ namespace Orange
 	uint32_t Tilemap::GetColumns() const
 	{
 		return m_Tiles.size();
+	}
+
+	void Tilemap::Draw()
+	{
+		Renderer::DrawTilemap(*this);
 	}
 }
