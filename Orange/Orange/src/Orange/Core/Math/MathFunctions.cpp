@@ -90,22 +90,22 @@ namespace Orange
 		return RandomEngine::Get().RandomInt64(a, b);
 	}
 
-	uint64_t RandomUInt64(uint64_t a, uint64_t b)
+	uint64_t Math::RandomUInt64(uint64_t a, uint64_t b)
 	{
 		return RandomEngine::Get().RandomUInt64(a, b);
 	}
 
-	int RandomInt(int a, int b)
+	int Math::RandomInt(int a, int b)
 	{
 		return RandomEngine::Get().RandomInt(a, b);
 	}
 
-	uint32_t RandomUInt(uint32_t a, uint32_t b)
+	uint32_t Math::RandomUInt(uint32_t a, uint32_t b)
 	{
 		return RandomEngine::Get().RandomUInt(a, b);
 	}
 
-	float RandomFloat(float a, float b)
+	float Math::RandomFloat(float a, float b)
 	{
 		return RandomEngine::Get().RandomFloat(a, b);
 	}

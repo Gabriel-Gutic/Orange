@@ -6,9 +6,14 @@
 
 namespace Orange
 {
-	Object::Object(std::string_view name)
-		:m_Name(name)
+	Object::Object(std::string_view name, const UUID& uuid)
+		:m_Name(name), m_UUID(uuid)
 	{
+	}
+
+	const UUID& Object::GetUUID() const
+	{
+		return m_UUID;
 	}
 
 	void Object::SetName(std::string_view name)
@@ -23,7 +28,7 @@ namespace Orange
 
 	std::string Object::ToString() const
 	{
-		return "<Object: '" + m_Name + "'>";
+		return "<Object: '" + m_Name + "' ID='" + m_UUID.ToString() + "'>";
 	}
 
 	Transform& Object::GetTransform()
@@ -80,10 +85,17 @@ namespace Orange
 
 	void Object::ToImGuiTree() const
 	{
+		int i = -1;
+		ToImGuiTree(i);
+	}
+
+	void Object::ToImGuiTree(int& i) const
+	{
+		i++;
 		if (m_Children.size() <= 0)
 		{
 			ImGuiTreeNodeFlags node_flags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen; // ImGuiTreeNodeFlags_Bullet
-			ImGui::TreeNodeEx((void*)(intptr_t)0, node_flags, m_Name.c_str(), 0);
+			ImGui::TreeNodeEx((void*)(intptr_t)i, node_flags, m_Name.c_str(), i);
 		}
 		else
 		{
@@ -91,7 +103,7 @@ namespace Orange
 			{
 				for (const auto& child : m_Children)
 				{
-					child->ToImGuiTree();
+					child->ToImGuiTree(i);
 				}
 				ImGui::TreePop();
 			}
