@@ -36,14 +36,14 @@ namespace Orange
 	int64_t RandomEngine::RandomInt64(int64_t a, int64_t b) const
 	{
 		std::uniform_int_distribution<int64_t> distribution(a, b);
-		int random_int = distribution(*m_MT);
+		int64_t random_int = distribution(*m_MT);
 		return random_int;
 	}
 
 	uint64_t RandomEngine::RandomUInt64(uint64_t a, uint64_t b) const
 	{
 		std::uniform_int_distribution<uint64_t> distribution(a, b);
-		int random_int = distribution(*m_MT);
+		uint64_t random_int = distribution(*m_MT);
 		return random_int;
 	}
 
@@ -57,7 +57,7 @@ namespace Orange
 	uint32_t RandomEngine::RandomUInt(uint32_t a, uint32_t b) const
 	{
 		std::uniform_int_distribution<uint32_t> distribution(a, b);
-		int random_int = distribution(*m_MT);
+		uint32_t random_int = distribution(*m_MT);
 		return random_int;
 	}
 

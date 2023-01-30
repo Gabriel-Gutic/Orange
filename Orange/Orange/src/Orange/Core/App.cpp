@@ -3,6 +3,7 @@
 
 #include "Renderer/Renderer.h"
 #include "ImGuiDevice.h"
+#include "Math/RandomEngine.h"
 
 
 namespace Orange
@@ -38,11 +39,15 @@ namespace Orange
 	{
 		Orange::Logger::Initialize();
 
+		Orange::RandomEngine::Initialize();
+
 		auto* app = App::Create();
 
 		app->Run();
 
 		delete app;
+
+		Orange::RandomEngine::Terminate();
 	}
 
 	void App::Run()
@@ -58,7 +63,7 @@ namespace Orange
 					Exit();
 				}
 
-				//ORANGE_PRINT(e.ToString());
+				ORANGE_PRINT(e.ToString());
 
 				for (auto& layer : m_LayerStack)
 					layer->OnEvent(e);

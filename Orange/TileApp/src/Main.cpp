@@ -15,8 +15,6 @@ public:
 		m_Tileset = Orange::Tileset::CreateShared("Assets/Images/tileset.png", Orange::Float2(16, 16));
 		m_Texture = Orange::Texture::CreateShared("Assets/Images/tileset.png");
 	
-		Orange::App::GetCamera()->SetWidth(20.0f);
-
 		auto& tilemap = *m_Tilemap;
 		tilemap[0][0] = Orange::Tile::CreateShared(m_Tileset, 4, 8);
 		tilemap[1][1] = Orange::Tile::CreateShared(m_Tileset, 4, 8);
@@ -32,6 +30,8 @@ public:
 
 	virtual void OnUpdate() override
 	{
+		Orange::App::GetCamera()->SetWidth(m_CameraWidth);
+
 		//Orange::Renderer::DrawQuad(Orange::Float2(0.0f, 0.0f));
 
 		//Orange::Renderer::DrawTexture(m_Texture, Orange::Float2(0.0f, 0.0f));
@@ -61,6 +61,15 @@ public:
 				Orange::App::GetCamera()->GetY() += 0.1f;
 			}
 		}
+
+		if (e.GetType() == Orange::EventType::Wheel)
+		{
+			auto& ev = e.Cast<Orange::WheelEvent>();
+			if (ev.GetValue() < 0.0f && m_CameraWidth > 1.0f)
+				m_CameraWidth += ev.GetValue() / 10.0f;
+			if (ev.GetValue() > 0.0f && m_CameraWidth < 10.0f)
+				m_CameraWidth += ev.GetValue() / 10.0f;
+		}
 	}
 
 	virtual void OnImGui() override
@@ -76,6 +85,8 @@ public:
 		ImGui::End();
 	}
 private:
+	float m_CameraWidth = 6.0f;
+
 	std::shared_ptr<Orange::Tilemap> m_Tilemap;
 	std::shared_ptr<Orange::Tileset> m_Tileset;
 	std::shared_ptr<Orange::Texture> m_Texture;
