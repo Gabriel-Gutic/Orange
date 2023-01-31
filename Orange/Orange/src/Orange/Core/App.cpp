@@ -10,7 +10,8 @@ namespace Orange
 {
 	App* App::s_Instance = nullptr;
 	App::App()
-		:m_IsRunning(true)
+		:m_IsRunning(true), m_FPS(60),
+		m_FrameCounter(0), m_DeltaTime(1.0f / 60.0f)
 	{
 		ORANGE_ASSERT(!s_Instance, "App already initialized!");
 		s_Instance = this;
@@ -52,8 +53,18 @@ namespace Orange
 
 	void App::Run()
 	{
+		m_Timer.Restart();
+
 		while (m_IsRunning)
 		{
+			if (m_Timer.GetSeconds() >= 1.0f)
+			{
+				m_FPS = m_FrameCounter;
+				m_FrameCounter = 0;
+				m_DeltaTime = 1.0f / static_cast<float>(m_FPS);
+				m_Timer.Restart();
+			}
+
 			while (!m_EventQueue.empty())
 			{
 				Event& e = *m_EventQueue.front();
@@ -89,8 +100,9 @@ namespace Orange
 
 			ImGuiDevice::End();
 
-
 			m_Window->SwapBuffers();
+
+			m_FrameCounter++;
 		}
 	}
 
@@ -102,6 +114,16 @@ namespace Orange
 	std::unique_ptr<Window>& App::GetWindow()
 	{
 		return s_Instance->m_Window;
+	}
+
+	size_t App::GetFPS()
+	{
+		return s_Instance->m_FPS;
+	}
+
+	float App::GetDeltaTime()
+	{
+		return s_Instance->m_DeltaTime;
 	}
 
 	void App::PushEvent(Event* e)

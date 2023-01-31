@@ -112,6 +112,7 @@
     <ClInclude Include="src\Orange\Core\Math\Vec2.h" />
     <ClInclude Include="src\Orange\Core\Memory.h" />
     <ClInclude Include="src\Orange\Core\Object.h" />
+    <ClInclude Include="src\Orange\Core\Timer\Timer.h" />
     <ClInclude Include="src\Orange\Core\UUID.h" />
     <ClInclude Include="src\Orange\Core\Window.h" />
     <ClInclude Include="src\Orange\Renderer\Camera.h" />
@@ -145,6 +146,7 @@
     <ClCompile Include="src\Orange\Core\Math\MathFunctions.cpp" />
     <ClCompile Include="src\Orange\Core\Math\RandomEngine.cpp" />
     <ClCompile Include="src\Orange\Core\Object.cpp" />
+    <ClCompile Include="src\Orange\Core\Timer\Timer.cpp" />
     <ClCompile Include="src\Orange\Core\UUID.cpp" />
     <ClCompile Include="src\Orange\Core\Window.cpp" />
     <ClCompile Include="src\Orange\Renderer\Camera.cpp" />

@@ -250,7 +250,7 @@ namespace Orange
 
 	void Window::SetVSync(bool vsync)
 	{
-		glfwSwapInterval(vsync);
+		glfwSwapInterval(static_cast<int>(vsync));
 		m_Data.VSync = vsync;
 	}
 

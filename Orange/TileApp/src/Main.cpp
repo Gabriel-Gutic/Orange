@@ -16,11 +16,15 @@ public:
 		m_Texture = Orange::Texture::CreateShared("Assets/Images/tileset.png");
 	
 		auto& tilemap = *m_Tilemap;
-		tilemap[0][0] = Orange::Tile::CreateShared(m_Tileset, 4, 8);
-		tilemap[1][1] = Orange::Tile::CreateShared(m_Tileset, 4, 8);
-		tilemap[2][2] = Orange::Tile::CreateShared(m_Tileset, 4, 8);
+
+		tilemap.GetTransform().Position = Orange::Float2(-2.0f, 2.0f);
+		for (int i = 0; i < 4; i++)
+			for (int j = 0; j < 4; j++)
+				tilemap[j][i] = Orange::Tile::CreateShared(m_Tileset, i, j);
 	
 		Orange::App::GetScene()->PushChild(m_Tilemap);
+
+		Orange::App::GetWindow()->SetVSync(true);
 	}
 
 	~TileAppLayer()
@@ -30,6 +34,11 @@ public:
 
 	virtual void OnUpdate() override
 	{
+		if (Orange::Input::Keyboard(ORANGE_KEY_F))
+		{
+			PRINT("FPS: {0}", Orange::App::GetFPS());
+		}
+
 		Orange::App::GetCamera()->SetWidth(m_CameraWidth);
 
 		//Orange::Renderer::DrawQuad(Orange::Float2(0.0f, 0.0f));
@@ -37,38 +46,34 @@ public:
 		//Orange::Renderer::DrawTexture(m_Texture, Orange::Float2(0.0f, 0.0f));
 
 		//Orange::Renderer::DrawTile(m_Tileset, 4, 8, Orange::Float2(0.0f, 0.0f));
+	
+		if (Orange::Input::Keyboard(ORANGE_KEY_LEFT))
+		{
+			Orange::App::GetCamera()->GetX() -= 0.1f;
+		}
+		if (Orange::Input::Keyboard(ORANGE_KEY_RIGHT))
+		{
+			Orange::App::GetCamera()->GetX() += 0.1f;
+		}
+		if (Orange::Input::Keyboard(ORANGE_KEY_DOWN))
+		{
+			Orange::App::GetCamera()->GetY() -= 0.1f;
+		}
+		if (Orange::Input::Keyboard(ORANGE_KEY_UP))
+		{
+			Orange::App::GetCamera()->GetY() += 0.1f;
+		}
 	}
 
 	virtual void OnEvent(const Orange::Event& e) override
 	{
-		if (e.GetType() == Orange::EventType::KeyPress)
-		{
-			auto& ev = e.Cast<Orange::KeyPressEvent>();
-			if (ev.GetKey() == ORANGE_KEY_LEFT)
-			{
-				Orange::App::GetCamera()->GetX() -= 0.1f;
-			}
-			if (ev.GetKey() == ORANGE_KEY_RIGHT)
-			{
-				Orange::App::GetCamera()->GetX() += 0.1f;
-			}
-			if (ev.GetKey() == ORANGE_KEY_DOWN)
-			{
-				Orange::App::GetCamera()->GetY() -= 0.1f;
-			}
-			if (ev.GetKey() == ORANGE_KEY_UP)
-			{
-				Orange::App::GetCamera()->GetY() += 0.1f;
-			}
-		}
-
 		if (e.GetType() == Orange::EventType::Wheel)
 		{
 			auto& ev = e.Cast<Orange::WheelEvent>();
 			if (ev.GetValue() < 0.0f && m_CameraWidth > 1.0f)
-				m_CameraWidth += ev.GetValue() / 10.0f;
-			if (ev.GetValue() > 0.0f && m_CameraWidth < 10.0f)
-				m_CameraWidth += ev.GetValue() / 10.0f;
+				m_CameraWidth += ev.GetValue() / 5.0f;
+			if (ev.GetValue() > 0.0f && m_CameraWidth < 20.0f)
+				m_CameraWidth += ev.GetValue() / 5.0f;
 		}
 	}
 
@@ -85,7 +90,7 @@ public:
 		ImGui::End();
 	}
 private:
-	float m_CameraWidth = 6.0f;
+	float m_CameraWidth = 10.0f;
 
 	std::shared_ptr<Orange::Tilemap> m_Tilemap;
 	std::shared_ptr<Orange::Tileset> m_Tileset;
