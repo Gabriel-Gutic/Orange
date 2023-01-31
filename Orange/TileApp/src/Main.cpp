@@ -17,14 +17,24 @@ public:
 	
 		auto& tilemap = *m_Tilemap;
 
+		tilemap = Orange::Tilemap(m_Tileset, { 
+			{  0,   1,   2,   3}, 
+			{ 11,  12,  12,  14},
+			{ 22,  12,  12,  25},
+			{ 11,  12,  12,  14},
+			{ 11,  12,  12,  14},
+			{132, 133, 134, 135},
+			{143, 144, 145, 146},
+			});
 		tilemap.GetTransform().Position = Orange::Float2(-2.0f, 2.0f);
-		for (int i = 0; i < 4; i++)
-			for (int j = 0; j < 4; j++)
-				tilemap[j][i] = Orange::Tile::CreateShared(m_Tileset, i, j);
+		//for (int i = 0; i < 4; i++)
+		//	for (int j = 0; j < 4; j++)
+		//		tilemap[j][i] = Orange::Tile::CreateShared(m_Tileset, i, j);
 	
 		Orange::App::GetScene()->PushChild(m_Tilemap);
 
-		Orange::App::GetWindow()->SetVSync(true);
+
+		//Orange::App::GetWindow()->SetVSync(true);
 	}
 
 	~TileAppLayer()

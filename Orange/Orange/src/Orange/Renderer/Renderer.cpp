@@ -170,7 +170,7 @@ namespace Orange
 		for (int i = 0; i < tilemap.GetRows(); i++)
 			for (int j = 0; j < tilemap.GetColumns(); j++)
 				if (tilemap[i][j])
-					DrawTile(tilemap[i][j], tilemap.GetTransform().Position + Float2(i, -j));
+					DrawTile(tilemap[i][j], tilemap.GetTransform().Position + Float2(j, -i));
 	}
 
 	Renderer* Renderer::Get()

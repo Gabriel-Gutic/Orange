@@ -15,6 +15,10 @@ namespace Orange
 
 		float GetAspectRatio() const;
 
+		const UInt2& GetSize() const;
+		uint32_t GetRows() const;
+		uint32_t GetColumns() const;
+
 		std::array<std::array<Float2, 2>, 2> GetTileCoords(uint32_t row, uint32_t column) const;
 	
 		static std::shared_ptr<Tileset> CreateShared(std::string_view filepath, const Float2& tileSize, float space = 0.0f);
@@ -28,6 +32,6 @@ namespace Orange
 		Float2 m_TileSize;
 		float m_Space;
 
-		UInt2 m_TileCount;
+		UInt2 m_Size;
 	};
 }

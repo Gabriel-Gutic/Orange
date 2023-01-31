@@ -6,6 +6,34 @@
 
 namespace Orange
 {
+	Tilemap::Tilemap(
+		const std::shared_ptr<Tileset>& tileset, 
+		const std::initializer_list<std::initializer_list<int>>& map)
+		:Object("Tilemap")
+	{
+		int cols = 0;
+		for (auto& line : map)
+		{
+			if (line.size() > cols)
+				cols = line.size();
+		}
+
+		Resize(map.size(), cols);
+
+		int i = 0;
+		for (auto& line : map)
+		{
+			int j = 0;
+			for (int tileIndex : line)
+			{
+				if (tileIndex > -1)
+					m_Tiles[i][j] = Tile::CreateShared(tileset, tileIndex / tileset->GetColumns(), tileIndex % tileset->GetColumns());
+				j++;
+			}
+			i++;
+		}
+	}
+
 	Tilemap::Tilemap(uint32_t rows, uint32_t cols)
 		:Object("Tilemap")
 	{
@@ -36,7 +64,7 @@ namespace Orange
 
 	uint32_t Tilemap::GetColumns() const
 	{
-		return m_Tiles.size();
+		return m_Tiles[0].size();
 	}
 
 	void Tilemap::Draw()

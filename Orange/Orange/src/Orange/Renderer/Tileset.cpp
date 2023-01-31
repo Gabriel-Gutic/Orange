@@ -38,6 +38,21 @@ namespace Orange
 		return m_TileSize.x / m_TileSize.y;
 	}
 
+	const UInt2& Tileset::GetSize() const
+	{
+		return m_Size;
+	}
+
+	uint32_t Tileset::GetRows() const
+	{
+		return m_Size.x;
+	}
+
+	uint32_t Tileset::GetColumns() const
+	{
+		return m_Size.y;
+	}
+
 	std::array<std::array<Float2, 2>, 2> Tileset::GetTileCoords(uint32_t row, uint32_t column) const
 	{
 		std::array<std::array<Float2, 2>, 2> arr;
@@ -71,8 +86,8 @@ namespace Orange
 	{
 		if (m_Texture)
 		{
-			m_TileCount.x = (m_Texture->GetWidth() - m_Space) / (m_TileSize.x + m_Space);
-			m_TileCount.y = (m_Texture->GetHeight() - m_Space) / (m_TileSize.y + m_Space);
+			m_Size.x = (m_Texture->GetHeight() - m_Space) / (m_TileSize.y + m_Space);
+			m_Size.y = (m_Texture->GetWidth()  - m_Space) / (m_TileSize.x + m_Space);
 		}
 	}
 }

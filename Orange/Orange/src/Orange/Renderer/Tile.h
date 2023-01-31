@@ -4,7 +4,7 @@
 
 namespace Orange
 {
-	class Tile
+	class Tile : Object
 	{
 	public:
 		Tile(const std::shared_ptr<Tileset>& set, uint32_t row, uint32_t column);

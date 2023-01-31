@@ -8,6 +8,8 @@ namespace Orange
 	class Tilemap : public Object
 	{
 	public:
+		Tilemap(const std::shared_ptr<Tileset>& tileset, 
+				const std::initializer_list<std::initializer_list<int>>& map);
 		Tilemap(uint32_t rows = 16, uint32_t cols = 16);
 		virtual ~Tilemap() = default;
 
