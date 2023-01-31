@@ -32,7 +32,7 @@ public:
 		
 	}
 
-	virtual void OnUpdate() override
+	virtual void OnUpdate(float dt) override
 	{
 		if (Orange::Input::Keyboard(ORANGE_KEY_F))
 		{
@@ -49,19 +49,19 @@ public:
 	
 		if (Orange::Input::Keyboard(ORANGE_KEY_LEFT))
 		{
-			Orange::App::GetCamera()->GetX() -= 0.1f;
+			Orange::App::GetCamera()->GetX() -= dt * m_CameraSpeed;
 		}
 		if (Orange::Input::Keyboard(ORANGE_KEY_RIGHT))
 		{
-			Orange::App::GetCamera()->GetX() += 0.1f;
+			Orange::App::GetCamera()->GetX() += dt * m_CameraSpeed;
 		}
 		if (Orange::Input::Keyboard(ORANGE_KEY_DOWN))
 		{
-			Orange::App::GetCamera()->GetY() -= 0.1f;
+			Orange::App::GetCamera()->GetY() -= dt * m_CameraSpeed;
 		}
 		if (Orange::Input::Keyboard(ORANGE_KEY_UP))
 		{
-			Orange::App::GetCamera()->GetY() += 0.1f;
+			Orange::App::GetCamera()->GetY() += dt * m_CameraSpeed;
 		}
 	}
 
@@ -90,6 +90,7 @@ public:
 		ImGui::End();
 	}
 private:
+	float m_CameraSpeed = 5.0f;
 	float m_CameraWidth = 10.0f;
 
 	std::shared_ptr<Orange::Tilemap> m_Tilemap;

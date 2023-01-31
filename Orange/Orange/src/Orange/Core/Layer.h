@@ -9,7 +9,7 @@ namespace Orange
 	protected:
 		Layer() = default;
 	public:
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(float dt) {}
 		virtual void OnEvent(const Event& e) {}
 		virtual void OnImGui() {}
 	};

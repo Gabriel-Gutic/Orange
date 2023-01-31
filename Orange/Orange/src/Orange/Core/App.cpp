@@ -87,7 +87,7 @@ namespace Orange
 			m_Window->Clear(FColor::Blue);
 
 			for (auto& layer : m_LayerStack)
-				layer->OnUpdate();
+				layer->OnUpdate(m_DeltaTime);
 
 			m_Scene->Draw();
 
