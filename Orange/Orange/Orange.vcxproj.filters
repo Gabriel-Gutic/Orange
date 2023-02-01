@@ -142,6 +142,7 @@
     <ClInclude Include="src\Orange\Core\UUID.h" />
     <ClInclude Include="src\Orange\Core\Math\RandomEngine.h" />
     <ClInclude Include="src\Orange\Core\Timer\Timer.h" />
+    <ClInclude Include="src\Orange\Resources\Resources.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Orange\Core\App.cpp">
@@ -222,5 +223,6 @@
     <ClCompile Include="src\Orange\Core\UUID.cpp" />
     <ClCompile Include="src\Orange\Core\Math\RandomEngine.cpp" />
     <ClCompile Include="src\Orange\Core\Timer\Timer.cpp" />
+    <ClCompile Include="src\Orange\Resources\Resources.cpp" />
   </ItemGroup>
 </Project>

@@ -14,11 +14,11 @@ public:
 		m_Tilemap = std::make_shared<Orange::Tilemap>();
 		m_Tileset = Orange::Tileset::CreateShared("Assets/Images/tileset.png", Orange::Float2(16, 16));
 		m_Texture = Orange::Texture::CreateShared("Assets/Images/tileset.png");
-	
+
 		auto& tilemap = *m_Tilemap;
 
-		tilemap = Orange::Tilemap(m_Tileset, { 
-			{  0,   1,   2,   3}, 
+		tilemap = Orange::Tilemap(m_Tileset, {
+			{  0,   1,   2,   3},
 			{ 11,  12,  12,  14},
 			{ 22,  12,  12,  25},
 			{ 11,  12,  12,  14},
@@ -30,7 +30,7 @@ public:
 		//for (int i = 0; i < 4; i++)
 		//	for (int j = 0; j < 4; j++)
 		//		tilemap[j][i] = Orange::Tile::CreateShared(m_Tileset, i, j);
-	
+
 		Orange::App::GetScene()->PushChild(m_Tilemap);
 
 
@@ -39,7 +39,7 @@ public:
 
 	~TileAppLayer()
 	{
-		
+
 	}
 
 	virtual void OnUpdate(float dt) override
@@ -56,7 +56,7 @@ public:
 		//Orange::Renderer::DrawTexture(m_Texture, Orange::Float2(0.0f, 0.0f));
 
 		//Orange::Renderer::DrawTile(m_Tileset, 4, 8, Orange::Float2(0.0f, 0.0f));
-	
+
 		if (Orange::Input::Keyboard(ORANGE_KEY_LEFT))
 		{
 			Orange::App::GetCamera()->GetX() -= dt * m_CameraSpeed;
@@ -124,4 +124,3 @@ Orange::App* Orange::App::Create()
 {
 	return Orange::Alloc<TileApp>();
 }
-

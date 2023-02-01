@@ -15,9 +15,10 @@ namespace Orange
 	class Image
 	{
 	public:
-		Image(std::string_view filePath);
+		Image(std::string_view filepath);
 		~Image();
 
+		const std::string& GetFilepath() const;
 		uint8_t* GetData();
 		const uint8_t* GetData() const;
 		int GetWidth() const;
@@ -28,6 +29,8 @@ namespace Orange
 		static std::shared_ptr<Image> CreateShared(std::string_view filePath);
 		static std::unique_ptr<Image> CreateUnique(std::string_view filePath);
 	private:
+		std::string m_Filepath;
+
 		uint8_t* m_Data;
 		int m_Width;
 		int m_Height;
