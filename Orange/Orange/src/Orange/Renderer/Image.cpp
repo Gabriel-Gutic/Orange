@@ -7,18 +7,18 @@
 
 namespace Orange
 {
-	Image::Image(std::string_view filePath)
-		:m_Data(nullptr), m_Width(0), m_Height(0), m_Format(ImageFormat::None)
+	Image::Image(std::string_view filepath)
+		:m_Filepath(filepath), m_Data(nullptr), m_Width(0), m_Height(0), m_Format(ImageFormat::None)
 	{
-		ORANGE_ASSERT(File::Exists(filePath), "Image '{0}' not found!", filePath);
+		ORANGE_ASSERT(File::Exists(filepath), "Image '{0}' not found!", filepath);
 
 		stbi_set_flip_vertically_on_load(true);
 
 		int nrChannels;
-		m_Data = stbi_load(filePath.data(), &m_Width, &m_Height, &nrChannels, 4);
+		m_Data = stbi_load(filepath.data(), &m_Width, &m_Height, &nrChannels, 4);
 		nrChannels = 4;
 
-		ORANGE_ASSERT(m_Data, "Failed to load image from path: {0}", filePath);
+		ORANGE_ASSERT(m_Data, "Failed to load image from path: {0}", filepath);
 
 		m_Format = static_cast<ImageFormat>(nrChannels);
 	}
@@ -26,6 +26,11 @@ namespace Orange
 	Image::~Image()
 	{
 		stbi_image_free(m_Data);
+	}
+
+	const std::string& Image::GetFilepath() const
+	{
+		return m_Filepath;
 	}
 
 	uint8_t* Image::GetData()

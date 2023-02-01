@@ -1,43 +1,68 @@
 #include "pch.h"
 
 
-class TileAppLayer : public Orange::Layer
+class TextureTests : public Orange::Layer
 {
 public:
-	TileAppLayer()
+	TextureTests()
 	{
 		Orange::ImGuiDevice::ShowDockspace();
 
 		m_FrameBuffer = std::make_shared<Orange::FrameBuffer>();
 		Orange::Renderer::SetFrameBuffer(m_FrameBuffer);
 
-		m_Tilemap = std::make_shared<Orange::Tilemap>();
-		m_Tileset = Orange::Tileset::CreateShared("Assets/Images/tileset.png", Orange::Float2(16, 16));
-		m_Texture = Orange::Texture::CreateShared("Assets/Images/tileset.png");
-	
-		auto& tilemap = *m_Tilemap;
+		// Test 1:
+		PRINT("Load textures with auto-name");
 
-		tilemap = Orange::Tilemap(m_Tileset, { 
-			{  0,   1,   2,   3}, 
-			{ 11,  12,  12,  14},
-			{ 22,  12,  12,  25},
-			{ 11,  12,  12,  14},
-			{ 11,  12,  12,  14},
-			{132, 133, 134, 135},
-			{143, 144, 145, 146},
-			});
-		tilemap.GetTransform().Position = Orange::Float2(-2.0f, 2.0f);
-		//for (int i = 0; i < 4; i++)
-		//	for (int j = 0; j < 4; j++)
-		//		tilemap[j][i] = Orange::Tile::CreateShared(m_Tileset, i, j);
-	
-		Orange::App::GetScene()->PushChild(m_Tilemap);
+		Orange::Resources::Textures::Load("Assets/Images/1.jpg");
+		Orange::Resources::Textures::Load("Assets/Images/1.jpg");
+		Orange::Resources::Textures::Load("Assets/Images/1.jpg");
+		Orange::Resources::Textures::Load("Assets/Images/1.jpg");
 
+		for (auto& [name, texture] : Orange::Resources::Textures::GetAll())
+		{
+			PRINT("Texture: '{0}' with filepath '{1}'", name, texture->GetFilepath());
+		}
 
-		//Orange::App::GetWindow()->SetVSync(true);
+		// Test 2:
+		PRINT("Load textures by specifying name");
+
+		Orange::Resources::Textures::Load("Assets/Images/1.jpg", "Image");
+		Orange::Resources::Textures::Load("Assets/Images/dragon.png", "Image");
+		Orange::Resources::Textures::Load("Assets/Images/tileset.png", "Image");
+
+		for (auto& [name, texture] : Orange::Resources::Textures::GetAll())
+		{
+			PRINT("Texture: '{0}' with filepath '{1}'", name, texture->GetFilepath());
+		}
+
+		// Test 3:
+		PRINT("Add premade textures");
+
+		auto texture1 = Orange::Texture::CreateShared("Assets/Images/1.jpg");
+		auto texture2 = Orange::Texture::CreateShared("Assets/Images/1.jpg");
+
+		Orange::Resources::Textures::Add(texture1, "AddTexture1");
+		Orange::Resources::Textures::Add(texture2, "AddTexture2");
+
+		for (auto& [name, texture] : Orange::Resources::Textures::GetAll())
+		{
+			PRINT("Texture: '{0}' with filepath '{1}'", name, texture->GetFilepath());
+		}
+
+		// Test 4:
+		PRINT("Unload textures");
+
+		Orange::Resources::Textures::Unload("AddTexture1");
+		Orange::Resources::Textures::Unload("AddTexture2");
+
+		for (auto& [name, texture] : Orange::Resources::Textures::GetAll())
+		{
+			PRINT("Texture: '{0}' with filepath '{1}'", name, texture->GetFilepath());
+		}
 	}
 
-	~TileAppLayer()
+	~TextureTests()
 	{
 		
 	}
@@ -51,12 +76,6 @@ public:
 
 		Orange::App::GetCamera()->SetWidth(m_CameraWidth);
 
-		//Orange::Renderer::DrawQuad(Orange::Float2(0.0f, 0.0f));
-
-		//Orange::Renderer::DrawTexture(m_Texture, Orange::Float2(0.0f, 0.0f));
-
-		//Orange::Renderer::DrawTile(m_Tileset, 4, 8, Orange::Float2(0.0f, 0.0f));
-	
 		if (Orange::Input::Keyboard(ORANGE_KEY_LEFT))
 		{
 			Orange::App::GetCamera()->GetX() -= dt * m_CameraSpeed;
@@ -103,9 +122,6 @@ private:
 	float m_CameraSpeed = 5.0f;
 	float m_CameraWidth = 10.0f;
 
-	std::shared_ptr<Orange::Tilemap> m_Tilemap;
-	std::shared_ptr<Orange::Tileset> m_Tileset;
-	std::shared_ptr<Orange::Texture> m_Texture;
 	std::shared_ptr<Orange::FrameBuffer> m_FrameBuffer;
 };
 
@@ -115,7 +131,7 @@ class TileApp : public Orange::App
 public:
 	TileApp()
 	{
-		PushLayer(new TileAppLayer());
+		PushLayer(new TextureTests());
 	}
 };
 

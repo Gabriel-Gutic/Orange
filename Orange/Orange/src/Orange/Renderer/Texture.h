@@ -14,6 +14,7 @@ namespace Orange
 		Texture(std::string_view filePath);
 		virtual ~Texture() = default;
 
+		const std::string& GetFilepath() const;
 		float GetAspectRatio() const;
 		uint32_t GetWidth() const;
 		uint32_t GetHeight() const;

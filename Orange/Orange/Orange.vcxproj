@@ -129,6 +129,7 @@
     <ClInclude Include="src\Orange\Renderer\Vertex.h" />
     <ClInclude Include="src\Orange\Renderer\VertexArray.h" />
     <ClInclude Include="src\Orange\Renderer\VertexBuffer.h" />
+    <ClInclude Include="src\Orange\Resources\Resources.h" />
     <ClInclude Include="src\pchOrange.h" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +162,7 @@
     <ClCompile Include="src\Orange\Renderer\Tileset.cpp" />
     <ClCompile Include="src\Orange\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Orange\Renderer\VertexBuffer.cpp" />
+    <ClCompile Include="src\Orange\Resources\Resources.cpp" />
     <ClCompile Include="src\pchOrange.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

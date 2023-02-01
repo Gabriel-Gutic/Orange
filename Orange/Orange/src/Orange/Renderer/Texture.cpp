@@ -52,6 +52,13 @@ namespace Orange
 	{
 	}
 
+	const std::string& Texture::GetFilepath() const
+	{
+		if (m_Image)
+			return m_Image->GetFilepath();
+		return "";
+	}
+
 	float Texture::GetAspectRatio() const
 	{
 		return static_cast<float>(m_Width) / static_cast<float>(m_Height);
