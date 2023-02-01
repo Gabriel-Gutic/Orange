@@ -21,17 +21,13 @@
     <ClCompile Include="src\pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Tests\AssetsSystemTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="files\File.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="assets\Shaders\VertexShader.glsl" />
-    <None Include="assets\Shaders\FragmentShader.glsl" />
   </ItemGroup>
 </Project>
