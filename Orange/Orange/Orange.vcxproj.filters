@@ -22,8 +22,14 @@
     <Filter Include="Orange\Core\Math">
       <UniqueIdentifier>{B20F3FF7-9E08-5E49-C73A-43CEB3923D55}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Orange\Core\Timer">
+      <UniqueIdentifier>{C9F6A3DF-350D-A275-7E84-2D97EAD972FD}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Orange\Renderer">
       <UniqueIdentifier>{07E76131-7372-CFF5-7C83-52EAE88D2BF6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Orange\Resources">
+      <UniqueIdentifier>{EB344CF9-D72D-6B4B-0060-50D0ECB74A57}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +91,9 @@
     <ClInclude Include="src\Orange\Core\Math\MathFunctions.h">
       <Filter>Orange\Core\Math</Filter>
     </ClInclude>
+    <ClInclude Include="src\Orange\Core\Math\RandomEngine.h">
+      <Filter>Orange\Core\Math</Filter>
+    </ClInclude>
     <ClInclude Include="src\Orange\Core\Math\Transform.h">
       <Filter>Orange\Core\Math</Filter>
     </ClInclude>
@@ -97,10 +106,19 @@
     <ClInclude Include="src\Orange\Core\Object.h">
       <Filter>Orange\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Orange\Core\Timer\Timer.h">
+      <Filter>Orange\Core\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Core\UUID.h">
+      <Filter>Orange\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Orange\Core\Window.h">
       <Filter>Orange\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Orange\Renderer\Camera.h">
+      <Filter>Orange\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Renderer\FrameBuffer.h">
       <Filter>Orange\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Orange\Renderer\Image.h">
@@ -110,6 +128,9 @@
       <Filter>Orange\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Orange\Renderer\RendererData.h">
+      <Filter>Orange\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Orange\Renderer\Scene.h">
       <Filter>Orange\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Orange\Renderer\Shader.h">
@@ -136,13 +157,10 @@
     <ClInclude Include="src\Orange\Renderer\VertexBuffer.h">
       <Filter>Orange\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Orange\Resources\Resources.h">
+      <Filter>Orange\Resources</Filter>
+    </ClInclude>
     <ClInclude Include="src\pchOrange.h" />
-    <ClInclude Include="src\Orange\Renderer\FrameBuffer.h" />
-    <ClInclude Include="src\Orange\Renderer\Scene.h" />
-    <ClInclude Include="src\Orange\Core\UUID.h" />
-    <ClInclude Include="src\Orange\Core\Math\RandomEngine.h" />
-    <ClInclude Include="src\Orange\Core\Timer\Timer.h" />
-    <ClInclude Include="src\Orange\Resources\Resources.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Orange\Core\App.cpp">
@@ -181,7 +199,16 @@
     <ClCompile Include="src\Orange\Core\Math\MathFunctions.cpp">
       <Filter>Orange\Core\Math</Filter>
     </ClCompile>
+    <ClCompile Include="src\Orange\Core\Math\RandomEngine.cpp">
+      <Filter>Orange\Core\Math</Filter>
+    </ClCompile>
     <ClCompile Include="src\Orange\Core\Object.cpp">
+      <Filter>Orange\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Orange\Core\Timer\Timer.cpp">
+      <Filter>Orange\Core\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Orange\Core\UUID.cpp">
       <Filter>Orange\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Orange\Core\Window.cpp">
@@ -190,10 +217,16 @@
     <ClCompile Include="src\Orange\Renderer\Camera.cpp">
       <Filter>Orange\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Orange\Renderer\FrameBuffer.cpp">
+      <Filter>Orange\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Orange\Renderer\Image.cpp">
       <Filter>Orange\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Orange\Renderer\Renderer.cpp">
+      <Filter>Orange\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Orange\Renderer\Scene.cpp">
       <Filter>Orange\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Orange\Renderer\Shader.cpp">
@@ -217,12 +250,9 @@
     <ClCompile Include="src\Orange\Renderer\VertexBuffer.cpp">
       <Filter>Orange\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Orange\Resources\Resources.cpp">
+      <Filter>Orange\Resources</Filter>
+    </ClCompile>
     <ClCompile Include="src\pchOrange.cpp" />
-    <ClCompile Include="src\Orange\Renderer\FrameBuffer.cpp" />
-    <ClCompile Include="src\Orange\Renderer\Scene.cpp" />
-    <ClCompile Include="src\Orange\Core\UUID.cpp" />
-    <ClCompile Include="src\Orange\Core\Math\RandomEngine.cpp" />
-    <ClCompile Include="src\Orange\Core\Timer\Timer.cpp" />
-    <ClCompile Include="src\Orange\Resources\Resources.cpp" />
   </ItemGroup>
 </Project>

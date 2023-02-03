@@ -29,7 +29,7 @@ namespace Orange
         io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
         io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
-        const char* fontPath = "Assets/Fonts/Roboto/Roboto-Regular.ttf";
+        const char* fontPath = "Core/Fonts/Roboto/Roboto-Regular.ttf";
         io.Fonts->AddFontFromFileTTF(fontPath, 16.0f);
 
         // Setup Platform/Renderer bindings

@@ -30,7 +30,7 @@ namespace Orange
 		auto vertexBuffer = VertexBuffer::CreateShared(BufferType::Dynamic, nullptr, sizeof(RendererData::Vertices));
 		m_VertexArray = VertexArray::CreateUnique({ 2, 4, 2, 1 }, vertexBuffer);
 
-		m_Shader = std::make_unique<Shader>("Assets/Shaders/VertexShader.glsl", "Assets/Shaders/FragmentShader.glsl");
+		m_Shader = std::make_unique<Shader>("Core/Shaders/VertexShader.glsl", "Core/Shaders/FragmentShader.glsl");
 	
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

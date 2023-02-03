@@ -16,4 +16,4 @@ bin_int_dir = "%{wks.location}/Build/bin-int/" .. output_dir .. "/%{prj.name}"
 sln = "%{wks.location}/"
 
 include "Orange"
-include "TileApp"
+include "OrangeEditor"
