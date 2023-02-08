@@ -1,5 +1,6 @@
 #pragma once
-#include "TileSet.h"
+#include "Object.h"
+#include "Renderer/TileSet.h"
 
 
 namespace Orange

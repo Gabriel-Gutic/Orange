@@ -3,8 +3,9 @@
 #include "VertexArray.h"
 #include "Texture.h"
 #include "Tileset.h"
-#include "Tilemap.h"
 #include "FrameBuffer.h"
+
+#include "Objects/Tilemap.h"
 
 
 namespace Orange

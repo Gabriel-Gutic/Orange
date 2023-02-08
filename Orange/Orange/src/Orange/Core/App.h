@@ -3,8 +3,8 @@
 #include "Layer.h"
 #include "Event/Events.h"
 
-#include "Renderer/Camera.h"
-#include "Renderer/Scene.h"
+#include "Objects/Camera.h"
+#include "Objects/Scene.h"
 
 
 namespace Orange

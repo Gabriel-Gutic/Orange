@@ -1,5 +1,5 @@
 #pragma once
-#include "Renderer/Camera.h"
+#include "Objects/Camera.h"
 
 
 namespace Orange::Input

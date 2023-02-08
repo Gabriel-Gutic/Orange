@@ -3,7 +3,7 @@
 
 #include "pchOrange.h"
 
-#include "Orange/Core/Object.h"
+#include "Orange/Objects/Object.h"
 #include "Orange/Core/Event/Events.h"
 #include "Orange/Core/ImGuiDevice.h"
 #include "Orange/Resources/Resources.h"

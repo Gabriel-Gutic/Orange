@@ -74,9 +74,6 @@ private:
 	float m_CameraSpeed = 5.0f;
 	float m_CameraWidth = 10.0f;
 
-	std::shared_ptr<Orange::Tilemap> m_Tilemap;
-	std::shared_ptr<Orange::Tileset> m_Tileset;
-	std::shared_ptr<Orange::Texture> m_Texture;
 	std::shared_ptr<Orange::FrameBuffer> m_FrameBuffer;
 };
 
