@@ -9,7 +9,7 @@ namespace Orange
 	Tilemap::Tilemap(
 		const std::shared_ptr<Tileset>& tileset, 
 		const std::initializer_list<std::initializer_list<int>>& map)
-		:Object("Tilemap")
+		:GameObject("Tilemap")
 	{
 		int cols = 0;
 		for (auto& line : map)
@@ -35,7 +35,7 @@ namespace Orange
 	}
 
 	Tilemap::Tilemap(uint32_t rows, uint32_t cols)
-		:Object("Tilemap")
+		:GameObject("Tilemap")
 	{
 		Resize(rows, cols);
 	}

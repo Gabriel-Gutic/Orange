@@ -4,11 +4,11 @@
 
 namespace Orange
 {
-	class Object
+	class GameObject
 	{
 	public:
-		Object(std::string_view name = "Object", const UUID& uuid = UUID());
-		virtual ~Object() = default;
+		GameObject(std::string_view name = "GameObject", const UUID& uuid = UUID());
+		virtual ~GameObject() = default;
 
 		const UUID& GetUUID() const;
 
@@ -20,11 +20,11 @@ namespace Orange
 		Transform& GetTransform();
 		const Transform& GetTransform() const;
 
-		const std::vector<std::shared_ptr<Object>>& GetChildren() const;
-		std::vector<std::shared_ptr<Object>>& GetChildren();
+		const std::vector<std::shared_ptr<GameObject>>& GetChildren() const;
+		std::vector<std::shared_ptr<GameObject>>& GetChildren();
 
-		void PushChild(const std::shared_ptr<Object>& child);
-		void InsertChild(const std::shared_ptr<Object>& child, uint32_t index);
+		void PushChild(const std::shared_ptr<GameObject>& child);
+		void InsertChild(const std::shared_ptr<GameObject>& child, uint32_t index);
 		void PopChild();
 		void RemoveChild(std::string_view name);
 		void RemoveChild(uint32_t index);
@@ -39,7 +39,7 @@ namespace Orange
 		std::string m_Name;
 		Transform m_Transform;
 
-		std::vector<std::shared_ptr<Object>> m_Children;
+		std::vector<std::shared_ptr<GameObject>> m_Children;
 
 		static int s_TreeID;
 	};
@@ -49,9 +49,9 @@ namespace Orange
 namespace std
 {
 	template <>
-	struct hash<Orange::Object>
+	struct hash<Orange::GameObject>
 	{
-		size_t operator() (const Orange::Object& obj) const
+		size_t operator() (const Orange::GameObject& obj) const
 		{
 			const Orange::UUID& uuid = obj.GetUUID();
 			return hash<Orange::UUID>()(uuid);

@@ -1,11 +1,11 @@
 #pragma once
-#include "Object.h"
+#include "GameObject.h"
 #include "Renderer/TileSet.h"
 
 
 namespace Orange
 {
-	class Tile : Object
+	class Tile : GameObject
 	{
 	public:
 		Tile(const std::shared_ptr<Tileset>& set, uint32_t row, uint32_t column);

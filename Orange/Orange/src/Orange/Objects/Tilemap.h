@@ -1,11 +1,11 @@
 #pragma once
-#include "Object.h"
+#include "GameObject.h"
 #include "Tile.h"
 
 
 namespace Orange
 {
-	class Tilemap : public Object
+	class Tilemap : public GameObject
 	{
 	public:
 		Tilemap(const std::shared_ptr<Tileset>& tileset, 

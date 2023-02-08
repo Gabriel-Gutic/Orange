@@ -5,7 +5,7 @@
 namespace Orange
 {
 	Scene::Scene()
-		:Object("Scene")
+		:GameObject("Scene")
 	{
 		m_Children.push_back(std::make_shared<Camera>());
 	}

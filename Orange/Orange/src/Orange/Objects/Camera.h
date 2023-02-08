@@ -1,10 +1,10 @@
 #pragma once
-#include "Object.h"
+#include "GameObject.h"
 
 
 namespace Orange
 {
-	class Camera : public Object
+	class Camera : public GameObject
 	{
 	public:
 		Camera();

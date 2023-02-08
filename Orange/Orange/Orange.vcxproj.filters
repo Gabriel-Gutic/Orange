@@ -103,7 +103,7 @@
     <ClInclude Include="src\Orange\Core\Memory.h">
       <Filter>Orange\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Orange\Objects\Object.h">
+    <ClInclude Include="src\Orange\Objects\GameObject.h">
       <Filter>Orange\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Orange\Core\Timer\Timer.h">
@@ -202,7 +202,7 @@
     <ClCompile Include="src\Orange\Core\Math\RandomEngine.cpp">
       <Filter>Orange\Core\Math</Filter>
     </ClCompile>
-    <ClCompile Include="src\Orange\Objects\Object.cpp">
+    <ClCompile Include="src\Orange\Objects\GameObject.cpp">
       <Filter>Orange\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Orange\Core\Timer\Timer.cpp">
