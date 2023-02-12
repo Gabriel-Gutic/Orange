@@ -88,6 +88,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Orange.h" />
+    <ClInclude Include="src\Orange\Components\Component.h" />
+    <ClInclude Include="src\Orange\Components\Components.h" />
+    <ClInclude Include="src\Orange\Components\Rigidbody.h" />
     <ClInclude Include="src\Orange\Core\App.h" />
     <ClInclude Include="src\Orange\Core\Color\Color.h" />
     <ClInclude Include="src\Orange\Core\Core.h" />
@@ -116,6 +119,7 @@
     <ClInclude Include="src\Orange\Core\UUID.h" />
     <ClInclude Include="src\Orange\Core\Window.h" />
     <ClInclude Include="src\Orange\Objects\Camera.h" />
+    <ClInclude Include="src\Orange\Objects\Quad.h" />
     <ClInclude Include="src\Orange\Renderer\FrameBuffer.h" />
     <ClInclude Include="src\Orange\Renderer\Image.h" />
     <ClInclude Include="src\Orange\Renderer\Renderer.h" />
@@ -133,6 +137,8 @@
     <ClInclude Include="src\pchOrange.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Orange\Components\Component.cpp" />
+    <ClCompile Include="src\Orange\Components\Rigidbody.cpp" />
     <ClCompile Include="src\Orange\Core\App.cpp" />
     <ClCompile Include="src\Orange\Core\Color\Color.cpp" />
     <ClCompile Include="src\Orange\Core\EntryPoint.cpp" />
@@ -151,6 +157,7 @@
     <ClCompile Include="src\Orange\Core\UUID.cpp" />
     <ClCompile Include="src\Orange\Core\Window.cpp" />
     <ClCompile Include="src\Orange\Objects\Camera.cpp" />
+    <ClCompile Include="src\Orange\Objects\Quad.cpp" />
     <ClCompile Include="src\Orange\Renderer\FrameBuffer.cpp" />
     <ClCompile Include="src\Orange\Renderer\Image.cpp" />
     <ClCompile Include="src\Orange\Renderer\Renderer.cpp" />

@@ -1,10 +1,11 @@
 #pragma once
 #include "Core/UUID.h"
+#include "Components/Component.h"
 
 
 namespace Orange
 {
-	class GameObject
+	class GameObject : public ComponentInterface
 	{
 	public:
 		GameObject(std::string_view name = "GameObject", const UUID& uuid = UUID());

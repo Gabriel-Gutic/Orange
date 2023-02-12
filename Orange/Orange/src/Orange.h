@@ -12,4 +12,6 @@
 #include "Orange/Renderer/Texture.h"
 #include "Orange/Renderer/Renderer.h"
 
+#include "Components/Components.h"
+
 #include <imgui/imgui.h>

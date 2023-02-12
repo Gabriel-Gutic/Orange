@@ -161,6 +161,10 @@
       <Filter>Orange\Resources</Filter>
     </ClInclude>
     <ClInclude Include="src\pchOrange.h" />
+    <ClInclude Include="src\Orange\Objects\Quad.h" />
+    <ClInclude Include="src\Orange\Components\Component.h" />
+    <ClInclude Include="src\Orange\Components\Rigidbody.h" />
+    <ClInclude Include="src\Orange\Components\Components.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Orange\Core\App.cpp">
@@ -254,5 +258,8 @@
       <Filter>Orange\Resources</Filter>
     </ClCompile>
     <ClCompile Include="src\pchOrange.cpp" />
+    <ClCompile Include="src\Orange\Objects\Quad.cpp" />
+    <ClCompile Include="src\Orange\Components\Component.cpp" />
+    <ClCompile Include="src\Orange\Components\Rigidbody.cpp" />
   </ItemGroup>
 </Project>
