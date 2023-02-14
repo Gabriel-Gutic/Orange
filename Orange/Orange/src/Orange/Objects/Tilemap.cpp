@@ -32,6 +32,10 @@ namespace Orange
 			}
 			i++;
 		}
+
+		SetDrawFunction([](const GameObject& obj) {
+			Renderer::DrawTilemap(static_cast<const Tilemap&>(obj));
+		});
 	}
 
 	Tilemap::Tilemap(uint32_t rows, uint32_t cols)
@@ -65,10 +69,5 @@ namespace Orange
 	uint32_t Tilemap::GetColumns() const
 	{
 		return m_Tiles[0].size();
-	}
-
-	void Tilemap::Draw()
-	{
-		Renderer::DrawTilemap(*this);
 	}
 }

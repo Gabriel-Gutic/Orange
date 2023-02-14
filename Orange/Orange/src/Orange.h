@@ -14,4 +14,6 @@
 
 #include "Components/Components.h"
 
+#include "Objects/Quad.h"
+
 #include <imgui/imgui.h>

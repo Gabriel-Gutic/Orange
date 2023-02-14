@@ -7,9 +7,9 @@ namespace Orange
 	{
 	public:
 		template <typename T>
-		void AddComponent(const T& component);
+		T& AddComponent(const T& component);
 		template <typename T, typename... Args>
-		void EmplaceComponent(Args... args);
+		T& EmplaceComponent(Args... args);
 		template <typename T>
 		bool HasComponent() const;
 		template <typename T>
@@ -33,15 +33,16 @@ namespace Orange
 	};
 
 	template<typename T>
-	inline void ComponentInterface::AddComponent(const T& component)
+	inline T& ComponentInterface::AddComponent(const T& component)
 	{
 		m_Components.push_back(component);
+		return std::any_cast<T&>(m_Components.back());
 	}
 
 	template<typename T, typename ...Args>
-	inline void ComponentInterface::EmplaceComponent(Args ...args)
+	inline T& ComponentInterface::EmplaceComponent(Args ...args)
 	{
-		AddComponent(T(args...));
+		return AddComponent(T(args...));
 	}
 
 	template<typename T>

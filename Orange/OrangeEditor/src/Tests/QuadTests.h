@@ -1,14 +1,13 @@
 #pragma once
-#include "Tests.h"
 
 
 namespace OrangeEditor
 {
-	class ComponentTestsLayer : public Orange::Layer
+	class QuadTestsLayer : public Orange::Layer
 	{
 	public:
-		ComponentTestsLayer();
-		~ComponentTestsLayer() = default;
+		QuadTestsLayer();
+		~QuadTestsLayer() = default;
 
 		virtual void OnUpdate(float dt) override;
 		virtual void OnEvent(const Orange::Event& e) override;

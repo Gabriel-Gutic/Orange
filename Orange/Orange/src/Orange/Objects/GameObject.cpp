@@ -7,7 +7,7 @@
 namespace Orange
 {
 	GameObject::GameObject(std::string_view name, const UUID& uuid)
-		:m_Name(name), m_UUID(uuid)
+		:m_Name(name), m_UUID(uuid), m_DrawFunction([](const GameObject&){})
 	{
 	}
 
@@ -87,6 +87,16 @@ namespace Orange
 	{
 		int i = -1;
 		ToImGuiTree(i);
+	}
+
+	void GameObject::Draw()
+	{
+		m_DrawFunction(*this);
+	}
+
+	void GameObject::SetDrawFunction(const std::function<void(const GameObject&)>& func)
+	{
+		m_DrawFunction = func;
 	}
 
 	void GameObject::ToImGuiTree(int& i) const

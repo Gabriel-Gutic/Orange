@@ -91,6 +91,7 @@
   <ItemGroup>
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Tests\ComponentTests.h" />
+    <ClInclude Include="src\Tests\QuadTests.h" />
     <ClInclude Include="src\Tests\Tests.h" />
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +101,7 @@
     </ClCompile>
     <ClCompile Include="src\Tests\AssetsSystemTests.cpp" />
     <ClCompile Include="src\Tests\ComponentTests.cpp" />
+    <ClCompile Include="src\Tests\QuadTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Orange\Orange.vcxproj">

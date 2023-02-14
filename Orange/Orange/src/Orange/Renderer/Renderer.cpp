@@ -9,6 +9,8 @@
 #include "RendererData.h"
 #include "Core/App.h"
 
+#include "Components/SpriteRenderer.h"
+
 
 namespace Orange
 {
@@ -143,6 +145,36 @@ namespace Orange
 	void Renderer::DrawTile(const std::shared_ptr<Tile>& tile, const Float2& position, float scale)
 	{
 		DrawTile(tile->GetSet(), tile->GetRow(), tile->GetColumn(), position, scale);
+	}
+
+	void Renderer::DrawSprite(const GameObject& obj)
+	{
+		auto& ins = s_Instance;
+		if (obj.HasComponent<SpriteRenderer>())
+		{
+			auto& renderer = obj.GetComponent<SpriteRenderer>();
+			
+			if (s_Data.VertexCounter + renderer.Indices.size() >= MAX_VERTEX_NUMBER ||
+				s_Data.TextureSlotCounter + renderer.Textures.size() >= MAX_TEXTURE_SLOTS)
+				ins->Flush();
+			if (s_Data.VertexCounter + renderer.Indices.size() >= MAX_VERTEX_NUMBER ||
+				s_Data.TextureSlotCounter + renderer.Textures.size() >= MAX_TEXTURE_SLOTS)
+				return;
+
+			auto transform = obj.GetTransform().ToMat3();
+
+			for (auto index : renderer.Indices)
+			{
+				auto vertex = renderer.Vertices[index];
+
+				float texIndex = -1.0f;
+				if (vertex.TexIndex >= 0.0f)
+					texIndex = ins->GetTextureIndex(renderer.Textures[static_cast<int>(vertex.TexIndex)]);
+				vertex.Position = transform * vertex.Position;
+				vertex.TexIndex = texIndex;
+				s_Data.Vertices[s_Data.VertexCounter++] = vertex;
+			}
+		}
 	}
 
 	void Renderer::DrawQuad(const Float2& center, float side, const FColor& color)

@@ -8,11 +8,10 @@ namespace Orange
 		:GameObject("Scene")
 	{
 		m_Children.push_back(std::make_shared<Camera>());
-	}
-
-	void Scene::Draw()
-	{
-		for (auto& child : m_Children)
-			child->Draw();
+	
+		SetDrawFunction([](const GameObject& obj) {
+			for (auto& child : obj.GetChildren())
+				child->Draw();
+		});
 	}
 }

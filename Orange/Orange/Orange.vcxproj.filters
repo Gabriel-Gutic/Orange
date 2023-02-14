@@ -165,6 +165,7 @@
     <ClInclude Include="src\Orange\Components\Component.h" />
     <ClInclude Include="src\Orange\Components\Rigidbody.h" />
     <ClInclude Include="src\Orange\Components\Components.h" />
+    <ClInclude Include="src\Orange\Components\SpriteRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Orange\Core\App.cpp">
@@ -261,5 +262,7 @@
     <ClCompile Include="src\Orange\Objects\Quad.cpp" />
     <ClCompile Include="src\Orange\Components\Component.cpp" />
     <ClCompile Include="src\Orange\Components\Rigidbody.cpp" />
+    <ClCompile Include="src\Orange\Components\SpriteRenderer.cpp" />
+    <ClCompile Include="src\Orange\Core\Math\Transform.cpp" />
   </ItemGroup>
 </Project>

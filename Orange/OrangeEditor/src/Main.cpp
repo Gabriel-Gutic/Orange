@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include "Tests/ComponentTests.h"
+#include "Tests/QuadTests.h"
 
 
 namespace OrangeEditor
@@ -90,7 +91,7 @@ namespace OrangeEditor
 	public:
 		OrangeEditor()
 		{
-			PushLayer(new ComponentTestsLayer());
+			PushLayer(new QuadTestsLayer());
 		}
 	};
 }

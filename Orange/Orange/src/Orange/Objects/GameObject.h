@@ -32,13 +32,15 @@ namespace Orange
 
 		void ToImGuiTree() const;
 
-		virtual void Draw(){}
+		void Draw();
+		virtual void SetDrawFunction(const std::function<void(const GameObject&)>& func);
 	private:
 		void ToImGuiTree(int& i) const;
 	protected:
 		UUID m_UUID;
 		std::string m_Name;
 		Transform m_Transform;
+		std::function<void(const GameObject&)> m_DrawFunction;
 
 		std::vector<std::shared_ptr<GameObject>> m_Children;
 

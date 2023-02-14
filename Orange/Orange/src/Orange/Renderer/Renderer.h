@@ -29,6 +29,7 @@ namespace Orange
 		static void DrawTexture(const std::shared_ptr<Texture>& texture, const Float2& position, float scale = 1.0f);
 		static void DrawTile(const std::shared_ptr<Tileset>& tileset, uint32_t row, uint32_t column, const Float2& position, float scale = 1.0f);
 		static void DrawTile(const std::shared_ptr<Tile>& tile, const Float2& position, float scale = 1.0f);
+		static void DrawSprite(const GameObject& obj);
 		static void DrawQuad(const Float2& center, float side = 1.0f, const FColor& color = FColor::White);
 		
 		static void DrawTilemap(const Tilemap& tilemap);
