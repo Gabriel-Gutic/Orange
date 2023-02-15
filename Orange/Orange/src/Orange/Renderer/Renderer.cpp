@@ -52,21 +52,16 @@ namespace Orange
 	void Renderer::Begin()
 	{
 		auto& ins = s_Instance;
-
-		bool drawToFramebuffer = ins->m_FrameBuffer != nullptr;
-		if (drawToFramebuffer)
+		if (ins->m_FrameBuffer != nullptr)
 		{
 			const auto& [w, h] = App::GetWindow()->GetSize().data;
 			ins->m_FrameBuffer->SetSize(w, h);
 			ins->m_FrameBuffer->Bind();
-			ins->m_FrameBuffer->GetTexture()->Bind();
-		}
-		else
-		{
-			glBindFramebuffer(GL_FRAMEBUFFER, 0);
-		}
 
-		ins->m_Shader->SetMat3("u_PV", App::GetCamera()->GetProjectionView(drawToFramebuffer));
+			App::GetWindow()->Clear(FColor::Blue);
+		}
+		
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 
 	void Renderer::End()
@@ -74,6 +69,16 @@ namespace Orange
 		s_Instance->Flush();
 
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	}
+
+	void Renderer::SetCamera(const std::shared_ptr<Camera>& camera)
+	{
+		s_Instance->m_Camera = camera;
+	}
+
+	const std::shared_ptr<Camera>& Renderer::GetCamera()
+	{
+		return s_Instance->m_Camera;
 	}
 
 	void Renderer::SetFrameBuffer(const std::shared_ptr<FrameBuffer>& fb)
@@ -214,6 +219,11 @@ namespace Orange
 	{
 		auto& ins = s_Instance;
 
+		if (ins->m_FrameBuffer != nullptr)
+			m_FrameBuffer->Bind();
+
+		ins->m_Shader->SetMat3("u_PV", ins->m_Camera->GetProjectionView(ins->m_FrameBuffer != nullptr));
+
 		ins->m_Shader->Use();
 		ins->m_VertexArray->Bind();
 
@@ -232,6 +242,8 @@ namespace Orange
 		ins->m_Shader->Use(false);
 
 		s_Data.VertexCounter = 0;
+
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 
 	float Renderer::GetTextureIndex(const std::shared_ptr<Texture>& texture)

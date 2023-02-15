@@ -134,12 +134,12 @@ namespace Orange
 		ImGui::End();
 	}
 
-	void ImGuiDevice::RenderWindow(const std::shared_ptr<FrameBuffer>& fb, bool centered)
+	void ImGuiDevice::RenderWindow(std::string_view name, const std::shared_ptr<FrameBuffer>& fb, bool centered)
 	{
 		if (fb)
 		{
 			ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
-			ImGui::Begin("RenderWindow");
+			ImGui::Begin(name.data());
 
 			auto [w, h] = fb->GetSize().data;
 			ImVec2 size = ImGui::GetWindowSize();

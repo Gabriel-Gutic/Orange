@@ -22,7 +22,7 @@ namespace Orange
 		static void HideDockspace();
 		static void Dockspace();
 
-		static void RenderWindow(const std::shared_ptr<FrameBuffer>& fb, bool centered = false);
+		static void RenderWindow(std::string_view name, const std::shared_ptr<FrameBuffer>& fb, bool centered = false);
 		static Float2 RenderWindowMousePos();
 		static Float2 RenderWindowSize();
 	private:

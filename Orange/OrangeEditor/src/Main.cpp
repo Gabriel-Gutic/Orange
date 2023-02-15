@@ -70,7 +70,7 @@ namespace OrangeEditor
 		{
 			ImGui::ShowDemoWindow((bool*)0);
 
-			Orange::ImGuiDevice::RenderWindow(m_FrameBuffer);
+			Orange::ImGuiDevice::RenderWindow("SceneView", m_FrameBuffer);
 
 			ImGui::Begin("Scene");
 

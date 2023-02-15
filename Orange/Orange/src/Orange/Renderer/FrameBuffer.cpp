@@ -10,7 +10,7 @@ namespace Orange
 		:m_Size({width, height})
 	{
 		glGenFramebuffers(1, &m_RendererID);
-		Bind();
+		glBindFramebuffer(GL_FRAMEBUFFER, m_RendererID);
 
 		m_Texture = Texture::CreateShared(m_Size.x, m_Size.y);
 
@@ -47,6 +47,7 @@ namespace Orange
 	void FrameBuffer::Bind() const
 	{
 		glBindFramebuffer(GL_FRAMEBUFFER, m_RendererID);
+		m_Texture->Bind();
 	}
 
 	void FrameBuffer::Unbind() const

@@ -23,6 +23,8 @@ namespace Orange
 		static void Begin();
 		static void End();
 
+		static void SetCamera(const std::shared_ptr<Camera>& camera);
+		static const std::shared_ptr<Camera>& GetCamera();
 		static void SetFrameBuffer(const std::shared_ptr<FrameBuffer>& fb);
 		static const std::shared_ptr<FrameBuffer>& GetFrameBuffer();
 
@@ -42,6 +44,7 @@ namespace Orange
 		std::unique_ptr<Shader> m_Shader;
 		std::unique_ptr<VertexArray> m_VertexArray;
 		std::shared_ptr<FrameBuffer> m_FrameBuffer;
+		std::shared_ptr<Camera> m_Camera;
 
 		static Renderer* s_Instance;
 	};
