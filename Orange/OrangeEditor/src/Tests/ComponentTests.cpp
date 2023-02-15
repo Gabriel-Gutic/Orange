@@ -45,19 +45,19 @@ namespace OrangeEditor
 
 		if (Orange::Input::Keyboard(ORANGE_KEY_LEFT))
 		{
-			Orange::App::GetCamera()->GetX() -= dt * m_CameraSpeed;
+			Orange::App::GetCamera()->GetTransform().Position.x -= dt * m_CameraSpeed;
 		}
 		if (Orange::Input::Keyboard(ORANGE_KEY_RIGHT))
 		{
-			Orange::App::GetCamera()->GetX() += dt * m_CameraSpeed;
+			Orange::App::GetCamera()->GetTransform().Position.x += dt * m_CameraSpeed;
 		}
 		if (Orange::Input::Keyboard(ORANGE_KEY_DOWN))
 		{
-			Orange::App::GetCamera()->GetY() -= dt * m_CameraSpeed;
+			Orange::App::GetCamera()->GetTransform().Position.y -= dt * m_CameraSpeed;
 		}
 		if (Orange::Input::Keyboard(ORANGE_KEY_UP))
 		{
-			Orange::App::GetCamera()->GetY() += dt * m_CameraSpeed;
+			Orange::App::GetCamera()->GetTransform().Position.y += dt * m_CameraSpeed;
 		}
 	}
 

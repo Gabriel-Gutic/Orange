@@ -30,12 +30,8 @@ namespace Orange
 		void RemoveChild(std::string_view name);
 		void RemoveChild(uint32_t index);
 
-		void ToImGuiTree() const;
-
 		void Draw();
 		virtual void SetDrawFunction(const std::function<void(const GameObject&)>& func);
-	private:
-		void ToImGuiTree(int& i) const;
 	protected:
 		UUID m_UUID;
 		std::string m_Name;
@@ -43,8 +39,6 @@ namespace Orange
 		std::function<void(const GameObject&)> m_DrawFunction;
 
 		std::vector<std::shared_ptr<GameObject>> m_Children;
-
-		static int s_TreeID;
 	};
 }
 

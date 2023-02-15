@@ -16,9 +16,7 @@ namespace OrangeEditor
 		Orange::App::GetWindow()->SetVSync(true);
 
 		// Tests
-		
 		auto firstQuad = Orange::CreateQuad();
-		firstQuad->GetTransform().Scale = { 5.0f, 5.0f };
 		Orange::App::GetScene()->PushChild(firstQuad);
 	}
 
@@ -33,19 +31,19 @@ namespace OrangeEditor
 
 		if (Orange::Input::Keyboard(ORANGE_KEY_LEFT))
 		{
-			Orange::App::GetCamera()->GetX() -= dt * m_CameraSpeed;
+			Orange::App::GetCamera()->GetTransform().Position.x -= dt * m_CameraSpeed;
 		}
 		if (Orange::Input::Keyboard(ORANGE_KEY_RIGHT))
 		{
-			Orange::App::GetCamera()->GetX() += dt * m_CameraSpeed;
+			Orange::App::GetCamera()->GetTransform().Position.x += dt * m_CameraSpeed;
 		}
 		if (Orange::Input::Keyboard(ORANGE_KEY_DOWN))
 		{
-			Orange::App::GetCamera()->GetY() -= dt * m_CameraSpeed;
+			Orange::App::GetCamera()->GetTransform().Position.y -= dt * m_CameraSpeed;
 		}
 		if (Orange::Input::Keyboard(ORANGE_KEY_UP))
 		{
-			Orange::App::GetCamera()->GetY() += dt * m_CameraSpeed;
+			Orange::App::GetCamera()->GetTransform().Position.y += dt * m_CameraSpeed;
 		}
 	}
 
@@ -67,10 +65,13 @@ namespace OrangeEditor
 
 		Orange::ImGuiDevice::RenderWindow(m_FrameBuffer);
 
-		ImGui::Begin("Scene");
-
+		ImGui::Begin("SceneTree");
 		Orange::App::GetScene()->ToImGuiTree();
+		ImGui::End();
 
+
+		ImGui::Begin("Inspector");
+		Orange::App::GetScene()->ShowSelectedItem();
 		ImGui::End();
 	}
 }

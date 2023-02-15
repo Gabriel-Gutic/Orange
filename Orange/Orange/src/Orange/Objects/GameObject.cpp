@@ -1,8 +1,6 @@
 #include "pchOrange.h"
 #include "GameObject.h"
 
-#include <imgui/imgui.h>
-
 
 namespace Orange
 {
@@ -83,12 +81,6 @@ namespace Orange
 		m_Children.erase(m_Children.begin() + index);
 	}
 
-	void GameObject::ToImGuiTree() const
-	{
-		int i = -1;
-		ToImGuiTree(i);
-	}
-
 	void GameObject::Draw()
 	{
 		m_DrawFunction(*this);
@@ -97,26 +89,5 @@ namespace Orange
 	void GameObject::SetDrawFunction(const std::function<void(const GameObject&)>& func)
 	{
 		m_DrawFunction = func;
-	}
-
-	void GameObject::ToImGuiTree(int& i) const
-	{
-		i++;
-		if (m_Children.size() <= 0)
-		{
-			ImGuiTreeNodeFlags node_flags = ImGuiTreeNodeFlags_Leaf | ImGuiTreeNodeFlags_NoTreePushOnOpen; // ImGuiTreeNodeFlags_Bullet
-			ImGui::TreeNodeEx((void*)(intptr_t)i, node_flags, m_Name.c_str(), i);
-		}
-		else
-		{
-			if (ImGui::TreeNode(m_Name.c_str()))
-			{
-				for (const auto& child : m_Children)
-				{
-					child->ToImGuiTree(i);
-				}
-				ImGui::TreePop();
-			}
-		}
 	}
 }

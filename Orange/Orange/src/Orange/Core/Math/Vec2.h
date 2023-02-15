@@ -33,6 +33,9 @@ namespace Orange
 		template <typename T>
 		friend std::ostream& operator<<(std::ostream& os, const Vec2<T>& v);
 
+		T* ToPtr();
+		const T* ToPtr() const;
+
 		template <typename T>
 		friend Vec2 operator+(const Vec2& v1, const Vec2& v2);
 		template <typename T>
@@ -89,6 +92,18 @@ namespace Orange
 		std::stringstream ss;
 		ss << "(" << x << ", " << y << ")";
 		return ss.str();
+	}
+
+	template<typename T>
+	inline T* Vec2<T>::ToPtr()
+	{
+		return &x;
+	}
+
+	template<typename T>
+	inline const T* Vec2<T>::ToPtr() const
+	{
+		return &x;
 	}
 
 	template<typename T>
