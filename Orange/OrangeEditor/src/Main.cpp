@@ -18,8 +18,12 @@ namespace OrangeEditor
 
 			Orange::App::GetWindow()->SetVSync(true);
 
+			std::dynamic_pointer_cast<Orange::Camera>(Orange::App::GetScene()->GetChildren()[0])->SetFrameBuffer(std::make_shared<Orange::FrameBuffer>());
+			auto camera = std::dynamic_pointer_cast<Orange::Camera>(Orange::App::GetScene()->GetChildren()[0]);
+			Orange::Renderer::AddCamera(camera);
+			camera->SetWidth(m_CameraWidth);
 
-			Orange::App::GetCamera()->EmplaceComponent<Orange::Rigidbody>();
+			Orange::App::GetScene()->PushChild(Orange::CreateQuad());
 		}
 
 		~OrangeEditorLayer()
@@ -70,12 +74,17 @@ namespace OrangeEditor
 		{
 			ImGui::ShowDemoWindow((bool*)0);
 
-			Orange::ImGuiDevice::RenderWindow("SceneView", m_FrameBuffer);
+			Orange::ImGuiDevice::RenderWindow("Game",
+				std::dynamic_pointer_cast<Orange::Camera>(Orange::App::GetScene()->GetChildren()[0])->GetFrameBuffer());
+			Orange::ImGuiDevice::RenderWindow("SceneView", Orange::App::GetCamera()->GetFrameBuffer());
 
-			ImGui::Begin("Scene");
-
+			ImGui::Begin("SceneTree");
 			Orange::App::GetScene()->ToImGuiTree();
+			ImGui::End();
 
+
+			ImGui::Begin("Inspector");
+			Orange::App::GetScene()->ShowSelectedItem();
 			ImGui::End();
 		}
 	private:
@@ -91,7 +100,7 @@ namespace OrangeEditor
 	public:
 		OrangeEditor()
 		{
-			PushLayer(new QuadTestsLayer());
+			PushLayer(new OrangeEditorLayer());
 		}
 	};
 }
