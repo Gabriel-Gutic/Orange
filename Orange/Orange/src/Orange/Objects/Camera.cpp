@@ -7,7 +7,7 @@
 namespace Orange
 {
 	Camera::Camera()
-		:Object("Camera"), m_Position(), m_Size()
+		:GameObject("Camera"), m_FrameBuffer(nullptr), m_Size()
 	{
 	}
 
@@ -24,10 +24,10 @@ namespace Orange
 		else
 			h = w / App::GetWindow()->GetAspectRatio();
 
-		float l = m_Position.x - w / 2.0f;
-		float r = m_Position.x + w / 2.0f;
-		float b = m_Position.y - h / 2.0f;
-		float t = m_Position.y + h / 2.0f;
+		float l = m_Transform.Position.x - w / 2.0f;
+		float r = m_Transform.Position.x + w / 2.0f;
+		float b = m_Transform.Position.y - h / 2.0f;
+		float t = m_Transform.Position.y + h / 2.0f;
 
 		Mat3 M(1.0f);
 		M[0][0] = 2 / (r - l);
@@ -35,8 +35,12 @@ namespace Orange
 		M[0][2] = (-r - l) / (r - l);
 		M[1][2] = (-t - b) / (t - b);
 
+		Mat3 R = Math::Rotate(-m_Transform.Rotation);
+
+
 		if (flippedVertically)
 			M[1][1] *= -1;
+		M = M * R;
 
 		return M;
 	}
@@ -51,48 +55,13 @@ namespace Orange
 		m_Size.y = height;
 	}
 
-	void Camera::SetX(float x)
+	void Camera::SetFrameBuffer(const std::shared_ptr<FrameBuffer>& frameBuffer)
 	{
-		m_Position.x = x;
+		m_FrameBuffer = frameBuffer;
 	}
 
-	void Camera::SetY(float y)
+	const std::shared_ptr<FrameBuffer>& Camera::GetFrameBuffer() const
 	{
-		m_Position.y = y;
-	}
-
-	void Camera::SetPosition(const Float2& pos)
-	{
-		m_Position = pos;
-	}
-
-	float& Camera::GetX()
-	{
-		return m_Position.x;
-	}
-
-	float& Camera::GetY()
-	{
-		return m_Position.y;
-	}
-
-	Float2& Camera::GetPosition()
-	{
-		return m_Position;
-	}
-
-	const float& Camera::GetX() const
-	{
-		return m_Position.x;
-	}
-
-	const float& Camera::GetY() const
-	{
-		return m_Position.y;
-	}
-
-	const Float2& Camera::GetPosition() const
-	{
-		return m_Position;
+		return m_FrameBuffer;
 	}
 }

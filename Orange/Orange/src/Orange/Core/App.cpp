@@ -22,6 +22,8 @@ namespace Orange
 
 		Renderer::Initialize();
 
+		Renderer::AddCamera(m_Camera);
+
 		ImGuiDevice::Initialize();
 	}
 
@@ -83,8 +85,6 @@ namespace Orange
 			}
 
 			Renderer::Begin();
-
-			m_Window->Clear(FColor::Blue);
 
 			for (auto& layer : m_LayerStack)
 				layer->OnUpdate(m_DeltaTime);

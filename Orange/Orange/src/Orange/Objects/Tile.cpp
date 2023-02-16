@@ -5,7 +5,7 @@
 namespace Orange
 {
 	Tile::Tile(const std::shared_ptr<Tileset>& set, uint32_t row, uint32_t column)
-		:Object("Tile"), m_Set(set), m_Row(row), m_Column(column)
+		:GameObject("Tile"), m_Set(set), m_Row(row), m_Column(column)
 	{
 	}
 

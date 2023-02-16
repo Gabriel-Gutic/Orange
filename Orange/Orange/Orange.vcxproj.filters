@@ -103,7 +103,7 @@
     <ClInclude Include="src\Orange\Core\Memory.h">
       <Filter>Orange\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Orange\Objects\Object.h">
+    <ClInclude Include="src\Orange\Objects\GameObject.h">
       <Filter>Orange\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Orange\Core\Timer\Timer.h">
@@ -161,6 +161,11 @@
       <Filter>Orange\Resources</Filter>
     </ClInclude>
     <ClInclude Include="src\pchOrange.h" />
+    <ClInclude Include="src\Orange\Objects\Quad.h" />
+    <ClInclude Include="src\Orange\Components\Component.h" />
+    <ClInclude Include="src\Orange\Components\Rigidbody.h" />
+    <ClInclude Include="src\Orange\Components\Components.h" />
+    <ClInclude Include="src\Orange\Components\SpriteRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Orange\Core\App.cpp">
@@ -202,7 +207,7 @@
     <ClCompile Include="src\Orange\Core\Math\RandomEngine.cpp">
       <Filter>Orange\Core\Math</Filter>
     </ClCompile>
-    <ClCompile Include="src\Orange\Objects\Object.cpp">
+    <ClCompile Include="src\Orange\Objects\GameObject.cpp">
       <Filter>Orange\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Orange\Core\Timer\Timer.cpp">
@@ -254,5 +259,10 @@
       <Filter>Orange\Resources</Filter>
     </ClCompile>
     <ClCompile Include="src\pchOrange.cpp" />
+    <ClCompile Include="src\Orange\Objects\Quad.cpp" />
+    <ClCompile Include="src\Orange\Components\Component.cpp" />
+    <ClCompile Include="src\Orange\Components\Rigidbody.cpp" />
+    <ClCompile Include="src\Orange\Components\SpriteRenderer.cpp" />
+    <ClCompile Include="src\Orange\Core\Math\Transform.cpp" />
   </ItemGroup>
 </Project>

@@ -23,12 +23,13 @@ namespace Orange
 		static void Begin();
 		static void End();
 
-		static void SetFrameBuffer(const std::shared_ptr<FrameBuffer>& fb);
-		static const std::shared_ptr<FrameBuffer>& GetFrameBuffer();
+		static void AddCamera(const std::shared_ptr<Camera>& camera);
+		static std::vector<std::shared_ptr<Camera>>& GetCameras();
 
 		static void DrawTexture(const std::shared_ptr<Texture>& texture, const Float2& position, float scale = 1.0f);
 		static void DrawTile(const std::shared_ptr<Tileset>& tileset, uint32_t row, uint32_t column, const Float2& position, float scale = 1.0f);
 		static void DrawTile(const std::shared_ptr<Tile>& tile, const Float2& position, float scale = 1.0f);
+		static void DrawSprite(const GameObject& obj);
 		static void DrawQuad(const Float2& center, float side = 1.0f, const FColor& color = FColor::White);
 		
 		static void DrawTilemap(const Tilemap& tilemap);
@@ -40,7 +41,7 @@ namespace Orange
 	private:
 		std::unique_ptr<Shader> m_Shader;
 		std::unique_ptr<VertexArray> m_VertexArray;
-		std::shared_ptr<FrameBuffer> m_FrameBuffer;
+		std::vector<std::shared_ptr<Camera>> m_Cameras;
 
 		static Renderer* s_Instance;
 	};

@@ -9,7 +9,7 @@ namespace Orange
 	Tilemap::Tilemap(
 		const std::shared_ptr<Tileset>& tileset, 
 		const std::initializer_list<std::initializer_list<int>>& map)
-		:Object("Tilemap")
+		:GameObject("Tilemap")
 	{
 		int cols = 0;
 		for (auto& line : map)
@@ -32,10 +32,14 @@ namespace Orange
 			}
 			i++;
 		}
+
+		SetDrawFunction([](const GameObject& obj) {
+			Renderer::DrawTilemap(static_cast<const Tilemap&>(obj));
+		});
 	}
 
 	Tilemap::Tilemap(uint32_t rows, uint32_t cols)
-		:Object("Tilemap")
+		:GameObject("Tilemap")
 	{
 		Resize(rows, cols);
 	}
@@ -65,10 +69,5 @@ namespace Orange
 	uint32_t Tilemap::GetColumns() const
 	{
 		return m_Tiles[0].size();
-	}
-
-	void Tilemap::Draw()
-	{
-		Renderer::DrawTilemap(*this);
 	}
 }

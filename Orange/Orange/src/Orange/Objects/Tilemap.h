@@ -1,11 +1,11 @@
 #pragma once
-#include "Object.h"
+#include "GameObject.h"
 #include "Tile.h"
 
 
 namespace Orange
 {
-	class Tilemap : public Object
+	class Tilemap : public GameObject
 	{
 	public:
 		Tilemap(const std::shared_ptr<Tileset>& tileset, 
@@ -20,8 +20,6 @@ namespace Orange
 
 		uint32_t GetRows() const;
 		uint32_t GetColumns() const;
-
-		virtual void Draw() override;
 	protected:
 		std::vector<std::vector<std::shared_ptr<Tile>>> m_Tiles;
 	};
