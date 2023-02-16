@@ -52,13 +52,17 @@ namespace Orange
 	void Renderer::Begin()
 	{
 		auto& ins = s_Instance;
-		if (ins->m_FrameBuffer != nullptr)
-		{
-			const auto& [w, h] = App::GetWindow()->GetSize().data;
-			ins->m_FrameBuffer->SetSize(w, h);
-			ins->m_FrameBuffer->Bind();
 
-			App::GetWindow()->Clear(FColor::Blue);
+		for (auto& camera : ins->m_Cameras)
+		{
+			if (camera->GetFrameBuffer() != nullptr)
+			{
+				const auto& [w, h] = App::GetWindow()->GetSize().data;
+				camera->GetFrameBuffer()->SetSize(w, h);
+				camera->GetFrameBuffer()->Bind();
+
+				App::GetWindow()->Clear(FColor::Blue);
+			}
 		}
 		
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -71,24 +75,14 @@ namespace Orange
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 
-	void Renderer::SetCamera(const std::shared_ptr<Camera>& camera)
+	void Renderer::AddCamera(const std::shared_ptr<Camera>& camera)
 	{
-		s_Instance->m_Camera = camera;
+		s_Instance->m_Cameras.push_back(camera);
 	}
 
-	const std::shared_ptr<Camera>& Renderer::GetCamera()
+	std::vector<std::shared_ptr<Camera>>& Renderer::GetCameras()
 	{
-		return s_Instance->m_Camera;
-	}
-
-	void Renderer::SetFrameBuffer(const std::shared_ptr<FrameBuffer>& fb)
-	{
-		s_Instance->m_FrameBuffer = fb;
-	}
-
-	const std::shared_ptr<FrameBuffer>& Renderer::GetFrameBuffer()
-	{
-		return s_Instance->m_FrameBuffer;
+		return s_Instance->m_Cameras;
 	}
 
 	void Renderer::DrawTexture(const std::shared_ptr<Texture>& texture, const Float2& position, float scale)
@@ -219,31 +213,34 @@ namespace Orange
 	{
 		auto& ins = s_Instance;
 
-		if (ins->m_FrameBuffer != nullptr)
-			m_FrameBuffer->Bind();
+		for (auto& camera : ins->m_Cameras)
+		{
+			if (camera->GetFrameBuffer() != nullptr)
+				camera->GetFrameBuffer()->Bind();
 
-		ins->m_Shader->SetMat3("u_PV", ins->m_Camera->GetProjectionView(ins->m_FrameBuffer != nullptr));
+			ins->m_Shader->SetMat3("u_PV", camera->GetProjectionView(camera->GetFrameBuffer() != nullptr));
 
-		ins->m_Shader->Use();
-		ins->m_VertexArray->Bind();
+			ins->m_Shader->Use();
+			ins->m_VertexArray->Bind();
 
-		ins->m_VertexArray->GetVertexBuffer()->Bind();
-		ins->m_VertexArray->GetVertexBuffer()->SetData(s_Data.Vertices, s_Data.VertexCounter);
-		ins->m_VertexArray->GetVertexBuffer()->Unbind();
+			ins->m_VertexArray->GetVertexBuffer()->Bind();
+			ins->m_VertexArray->GetVertexBuffer()->SetData(s_Data.Vertices, s_Data.VertexCounter);
+			ins->m_VertexArray->GetVertexBuffer()->Unbind();
 
-		for (uint32_t i = 0; i < s_Data.TextureSlotCounter; i++)
-			s_Data.TextureSlots[i]->BindUnit(i);
+			for (uint32_t i = 0; i < s_Data.TextureSlotCounter; i++)
+				s_Data.TextureSlots[i]->BindUnit(i);
 
-		m_Shader->SetIntArray("u_Textures", s_Data.TextureUnits);
+			m_Shader->SetIntArray("u_Textures", s_Data.TextureUnits);
 
-		glDrawArrays(GL_TRIANGLES, 0, s_Data.VertexCounter);
+			glDrawArrays(GL_TRIANGLES, 0, s_Data.VertexCounter);
 
-		ins->m_VertexArray->Unbind();
-		ins->m_Shader->Use(false);
+			ins->m_VertexArray->Unbind();
+			ins->m_Shader->Use(false);
+
+			glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		}
 
 		s_Data.VertexCounter = 0;
-
-		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	}
 
 	float Renderer::GetTextureIndex(const std::shared_ptr<Texture>& texture)

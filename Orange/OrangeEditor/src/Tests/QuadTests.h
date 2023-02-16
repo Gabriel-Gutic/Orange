@@ -15,7 +15,5 @@ namespace OrangeEditor
 	private:
 		float m_CameraSpeed = 5.0f;
 		float m_CameraWidth = 10.0f;
-
-		std::shared_ptr<Orange::FrameBuffer> m_FrameBuffer;
 	};
 }

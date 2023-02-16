@@ -10,10 +10,14 @@ namespace OrangeEditor
 	{
 		Orange::ImGuiDevice::ShowDockspace();
 
-		m_FrameBuffer = std::make_shared<Orange::FrameBuffer>();
-		Orange::Renderer::SetFrameBuffer(m_FrameBuffer);
+		Orange::App::GetCamera()->SetFrameBuffer(std::make_shared<Orange::FrameBuffer>());
+		std::dynamic_pointer_cast<Orange::Camera>(Orange::App::GetScene()->GetChildren()[0])->SetFrameBuffer(std::make_shared<Orange::FrameBuffer>());
 
 		Orange::App::GetWindow()->SetVSync(true);
+
+		auto camera = std::dynamic_pointer_cast<Orange::Camera>(Orange::App::GetScene()->GetChildren()[0]);
+		Orange::Renderer::AddCamera(camera);
+		camera->SetWidth(m_CameraWidth);
 
 		// Tests
 		auto firstQuad = Orange::CreateQuad();
@@ -63,7 +67,9 @@ namespace OrangeEditor
 	{
 		ImGui::ShowDemoWindow((bool*)0);
 
-		Orange::ImGuiDevice::RenderWindow("SceneView", m_FrameBuffer);
+		Orange::ImGuiDevice::RenderWindow("SceneView", Orange::App::GetCamera()->GetFrameBuffer());
+		Orange::ImGuiDevice::RenderWindow("Game", 
+			std::dynamic_pointer_cast<Orange::Camera>(Orange::App::GetScene()->GetChildren()[0])->GetFrameBuffer());
 
 		ImGui::Begin("SceneTree");
 		Orange::App::GetScene()->ToImGuiTree();

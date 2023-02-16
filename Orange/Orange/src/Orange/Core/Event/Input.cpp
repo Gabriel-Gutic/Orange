@@ -22,79 +22,79 @@ namespace Orange
 		return glfwGetMouseButton(std::any_cast<GLFWwindow*>(App::GetWindow()->Get()), button);
 	}
 
-	Float2 Input::MousePos()
-	{
-		if (Renderer::GetFrameBuffer())
-		{
-			// Coordinates inside ImGui RenderWindow
-			return ImGuiDevice::RenderWindowMousePos();
-		}
-		else
-		{
-			// Coordinates inside entire window
-			Float2 pos;
-			double px, py;
+	//Float2 Input::MousePos(const std::shared_ptr<Camera>& camera)
+	//{
+	//	if (camera->GetFrameBuffer())
+	//	{
+	//		// Coordinates inside ImGui RenderWindow
+	//		return ImGuiDevice::RenderWindowMousePos();
+	//	}
+	//	else
+	//	{
+	//		// Coordinates inside entire window
+	//		Float2 pos;
+	//		double px, py;
 
-			auto& window = App::GetWindow();
-			glfwGetCursorPos(std::any_cast<GLFWwindow*>(window->Get()),
-				&px, &py);
-			pos.x = static_cast<float>(px);
-			pos.y = static_cast<float>(py);
-			pos.y = -(pos.y - window->GetHeight());
+	//		auto& window = App::GetWindow();
+	//		glfwGetCursorPos(std::any_cast<GLFWwindow*>(window->Get()),
+	//			&px, &py);
+	//		pos.x = static_cast<float>(px);
+	//		pos.y = static_cast<float>(py);
+	//		pos.y = -(pos.y - window->GetHeight());
 
-			return pos;
-		}
-	}
+	//		return pos;
+	//	}
+	//}
 
-	Float2 Input::MouseToWorldCoords(const std::shared_ptr<Camera>& camera)
-	{
-		auto [x, y] = MousePos().data;
-		auto [w, h] = ScreenSize().data;
+	//Float2 Input::MouseToWorldCoords(const std::shared_ptr<Camera>& camera)
+	//{
+	//	auto [x, y] = MousePos().data;
+	//	auto [w, h] = ScreenSize().data;
 
-		Float2 pos;
+	//	Float2 pos;
 
-		pos.x = x / w * 2.0f - 1.0f;
-		pos.y = y / h * 2.0f - 1.0f;
+	//	pos.x = x / w * 2.0f - 1.0f;
+	//	pos.y = y / h * 2.0f - 1.0f;
 
-		pos = camera->GetProjectionView().Inverse() * pos;
+	//	pos = camera->GetProjectionView().Inverse() * pos;
 
-		return pos;
-	}
+	//	return pos;
+	//}
 
-	float Input::MouseX()
-	{
-		return MousePos().x;
-	}
+	//float Input::MouseX()
+	//{
+	//	return MousePos().x;
+	//}
 
-	float Input::MouseY()
-	{
-		return MousePos().y;
-	}
+	//float Input::MouseY()
+	//{
+	//	return MousePos().y;
+	//}
 
-	Float2 Input::ScreenSize()
-	{
-		if (Renderer::GetFrameBuffer())
-		{
-			// Size of the ImGui RenderWindow screen
-			return ImGuiDevice::RenderWindowSize();
-		}
-		else
-		{
-			// Size of the entire screen
-			auto [w, h] = App::GetWindow()->GetSize().data;
-			return Float2(w, h);
-		}
-	}
+	//Float2 Input::ScreenSize()
+	//{
+	//	if (Renderer::GetFrameBuffer())
+	//	{
+	//		// Size of the ImGui RenderWindow screen
+	//		return ImGuiDevice::RenderWindowSize();
+	//	}
+	//	else
+	//	{
+	//		// Size of the entire screen
+	//		auto [w, h] = App::GetWindow()->GetSize().data;
+	//		return Float2(w, h);
+	//	}
+	//}
 
-	float Input::ScreenWidth()
-	{
-		return ScreenSize().x;
-	}
+	//float Input::ScreenWidth()
+	//{
+	//	return ScreenSize().x;
+	//}
 
-	float Input::ScreenHeight()
-	{
-		return ScreenSize().y;
-	}
+	//float Input::ScreenHeight()
+	//{
+	//	return ScreenSize().y;
+	//}
 }
 
 

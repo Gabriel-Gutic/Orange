@@ -22,7 +22,7 @@ namespace Orange
 
 		Renderer::Initialize();
 
-		Renderer::SetCamera(m_Camera);
+		Renderer::AddCamera(m_Camera);
 
 		ImGuiDevice::Initialize();
 	}

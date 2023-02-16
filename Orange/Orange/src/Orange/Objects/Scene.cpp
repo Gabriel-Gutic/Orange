@@ -23,6 +23,7 @@ namespace Orange
 		{
 			GameObject& obj = *m_ShownItem;
 
+			ImGui::Text(obj.GetName().c_str());
 			obj.GetTransform().ToImGui();
 		}
 	}

@@ -14,7 +14,7 @@ namespace OrangeEditor
 			Orange::ImGuiDevice::ShowDockspace();
 
 			m_FrameBuffer = std::make_shared<Orange::FrameBuffer>();
-			Orange::Renderer::SetFrameBuffer(m_FrameBuffer);
+			Orange::App::GetCamera()->SetFrameBuffer(m_FrameBuffer);
 
 			Orange::App::GetWindow()->SetVSync(true);
 

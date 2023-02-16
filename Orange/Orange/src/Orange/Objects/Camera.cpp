@@ -7,7 +7,7 @@
 namespace Orange
 {
 	Camera::Camera()
-		:GameObject("Camera"), m_Size()
+		:GameObject("Camera"), m_FrameBuffer(nullptr), m_Size()
 	{
 	}
 
@@ -35,12 +35,12 @@ namespace Orange
 		M[0][2] = (-r - l) / (r - l);
 		M[1][2] = (-t - b) / (t - b);
 
-		Mat3 R = Math::Rotate(m_Transform.Rotation);
+		Mat3 R = Math::Rotate(-m_Transform.Rotation);
 
-		M = R * M;
 
 		if (flippedVertically)
 			M[1][1] *= -1;
+		M = M * R;
 
 		return M;
 	}
@@ -53,5 +53,15 @@ namespace Orange
 	void Camera::SetHeight(float height)
 	{
 		m_Size.y = height;
+	}
+
+	void Camera::SetFrameBuffer(const std::shared_ptr<FrameBuffer>& frameBuffer)
+	{
+		m_FrameBuffer = frameBuffer;
+	}
+
+	const std::shared_ptr<FrameBuffer>& Camera::GetFrameBuffer() const
+	{
+		return m_FrameBuffer;
 	}
 }
